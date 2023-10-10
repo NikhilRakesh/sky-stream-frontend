@@ -4,8 +4,8 @@ function Support() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="61"
-      height="56"
+      width="50"
+      height="50"
       fill="none"
       viewBox="0 0 61 56"
     >
