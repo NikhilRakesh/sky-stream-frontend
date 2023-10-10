@@ -1,10 +1,10 @@
 import React from 'react'
 import Circle from './Circle'
-import Avatar from '../icons/Avatar';
-import Tick from '../icons/Tick';
-import Www from '../icons/Www';
-import Dot from '../icons/Dot';
-import Line from '../icons/Dot';
+import Avatar from '../../icons/Avatar';
+import Tick from '../../icons/Tick';
+import Www from '../../icons/Www';
+import Dot from '../../icons/Dot';
+import Line from '../../icons/Dot';
 function Section4() {
     const obj = [
         { component: <Avatar />, des: 'Join now' },

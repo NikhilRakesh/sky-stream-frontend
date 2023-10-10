@@ -1,10 +1,10 @@
 import React from 'react'
 import Circle from './Circle'
-import Client from '../icons/Client'
-import Maximum from '../icons/Maximum'
-import Server from '../icons/Server'
-import Support from '../icons/Support'
-import Tire from '../icons/Tire'
+import Client from '../../icons/Client'
+import Maximum from '../../icons/Maximum'
+import Server from '../../icons/Server'
+import Support from '../../icons/Support'
+import Tire from '../../icons/Tire'
 
 
 function Section1() {

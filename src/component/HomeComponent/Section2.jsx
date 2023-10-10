@@ -1,8 +1,8 @@
 import React from 'react'
 import Box from './Box'
-import Internetspeed from '../icons/Internetspeed'
-import Cloud from '../icons/Cloud'
-import Secure from '../icons/Secure'
+import Internetspeed from '../../icons/Internetspeed'
+import Cloud from '../../icons/Cloud'
+import Secure from '../../icons/Secure'
 
 function Section2() {
     const obj = [

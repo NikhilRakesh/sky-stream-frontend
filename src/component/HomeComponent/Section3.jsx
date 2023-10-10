@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSnapshot } from 'valtio'
-import state from '../store'
-import Migration from '../assets/images/migration.png'
+import state from '../../store'
+import Migration from '../../../src/assets/images/migration.png'
 
 function Section3() {
   const snap = useSnapshot(state)

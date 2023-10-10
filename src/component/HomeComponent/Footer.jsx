@@ -1,9 +1,10 @@
 import React from 'react'
-import Logo from '../assets/images/Logo.png'
-import Fb from '../icons/fb'
-import Insta from '../icons/Insta'
-import Linkdin from '../icons/Linkdin'
-import Twiter from '../icons/twiter'
+import Fb from '../../icons/fb'
+import Insta from '../../icons/Insta'
+import Linkdin from '../../icons/Linkdin'
+import Twiter from '../../icons/Twiter'
+import Logo from '../../../src/assets/images/Logo.png'
+
 
 function Footer() {
   return (
@@ -11,7 +12,7 @@ function Footer() {
 
     <div className='flex items-center '>
       <div className='w-7'>      
-        <img src={Logo} />
+       <img src={Logo} />
       </div>
 
       <div className='px-4'>Sky Stream</div>
@@ -22,7 +23,7 @@ function Footer() {
     </div>
 
     <div className=' flex gap-4'>
-      <div> <Fb /> </div>
+      <div> <Fb/> </div>
       <div> <Insta /> </div>
       <div> <Linkdin /> </div>
       <div> <Twiter /> </div>
