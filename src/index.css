@@ -3,4 +3,5 @@
 @tailwind utilities;
 #root{
     overflow-x: hidden;
+    
 }

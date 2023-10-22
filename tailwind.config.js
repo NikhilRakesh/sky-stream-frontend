@@ -5,13 +5,24 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-    colors: {
-      primary:"#CF088C",
-      white:"#FFFFFF",
-      gray:"#CFD1D9",
-      darkBlue:"#03091D"
-    }
+    extend: {
+      colors: {
+        primary:"#CF088C",
+        white:"#FFFFFF",
+        gray:"#CFD1D9",
+        darkBlue:"#03091D",
+        red:"#F00",
+        blue:"#017EFA",
+        black:"#000",
+        light:"#F8F8F8",
+        purple:"#5B078F",
+        orange:"#D8608B",
+        liteblue:"#6EE1F8",
+        lightgreen:"#30D987",
+        lightorange:"#ed664e"
+      }
+    },
+    
   },
   plugins: [],
 }

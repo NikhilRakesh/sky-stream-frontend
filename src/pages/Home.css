@@ -17,4 +17,22 @@
     backdrop-filter: blur(2.1px);
     -webkit-backdrop-filter: blur(2.1px);
     }
+
+.dashboard-box-gradiant{
+        background: linear-gradient(180deg, rgba(3, 9, 29, 0.64) 0%, rgba(3, 9, 29, 0.00) 100%);
+    }
+
+.contact-box-gradiant{
+        border-radius: 30px;
+background: linear-gradient(225deg, rgba(212, 8, 140, 0.70) 14.64%, rgba(204, 8, 140, 0.70) 17.47%, rgba(133, 7, 138, 0.70) 47.17%, rgba(89, 6, 137, 0.70) 68.39%, rgba(72, 6, 137, 0.70) 79%);
+    }
+  
+    /* Add this to your CSS */
+.overflow-hidden::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  
+  .overflow-hidden {
+    scrollbar-width: none;
+  }
   
