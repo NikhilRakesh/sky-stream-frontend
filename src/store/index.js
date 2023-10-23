@@ -1,6 +1,8 @@
 import { proxy } from "valtio";
 const state = proxy({
-    deviceType : ''
+    deviceType : '',
+    currentTab :"dashboard"
+
 })
 
 

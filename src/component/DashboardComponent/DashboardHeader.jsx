@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { BiBell } from "react-icons/bi";
 import { MdExpandMore } from "react-icons/md";
+import Searchicon from "./Searchicon";
 
 function DashboardHeader() {
+  const [search, setSearch ] = useState(false)
   return (
     <div className="flex justify-between py-6 px-10 items-center ">
       <div className="text-2xl font-bold ">
         <h1>Dashboard</h1>
       </div>
       <div className="left flex items-center gap-8">
-        <div className="text-xl bg-gray rounded-full w-9 h-9 justify-center items-center flex">
-          <FiSearch />
+      
+      {
+            search ? <div> <Searchicon /> </div> : null
+          }
+          
+            <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
+          <FiSearch onClick={()=>{
+            setSearch(!search)
+            console.log(search);
+          }} />
+        
         </div>
-        <div className="text-xl bg-gray rounded-full w-9 h-9 justify-center items-center flex">
+        <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
           <BiBell />
         </div>
         <div className="account flex items-center gap-5">

@@ -22,7 +22,7 @@ function Livenow({ color, name, time }) {
         </div>
       </div>
 
-      <div className='body pl-20 pr-28 py-5 overflow-y-scroll h-52 overflow-hidden'>
+      <div className='body pl-20 pr-28 py-5 overflow-y-scroll h-52 overflow-hidden cursor-move'>
         <div className='flex text-gray font-bold items-center justify-between'>
           <h1>Channel Name</h1>
           <h1>Duration</h1>

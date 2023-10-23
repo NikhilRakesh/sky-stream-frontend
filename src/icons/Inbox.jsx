@@ -1,12 +1,15 @@
 import React from "react";
+import { useSnapshot } from "valtio";
+import state from "../store";
 
 function Inbox() {
+  const snap= useSnapshot(state)
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      fill="none"
+      fill={`${snap.currentTab=="inbox" ? "#fff" : "none"}`}
       viewBox="0 0 24 24"
     >
       <path

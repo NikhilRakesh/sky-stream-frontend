@@ -1,12 +1,17 @@
 import React from "react";
+import state from "../store";
+import { useSnapshot } from "valtio";
 
 function Channel() {
+  const snap= useSnapshot(state)
+ 
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      fill="none"
+      fill=""
       viewBox="0 0 24 24"
     >
       <path

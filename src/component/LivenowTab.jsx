@@ -1,7 +1,6 @@
 import React from 'react'
 
 function LivenowTab({color,name,time}) {
-    console.log(name)
     
   return (
     <div>

@@ -17,6 +17,7 @@ function Sidebar() {
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
   const snap = useSnapshot(state);
+  
   const obj = [
     { Component: <Dash />, name: "Dashboard", value: "dashboard" },
     { Component: <Inbox />, name: "Inbox",value: "inbox" },
@@ -25,19 +26,21 @@ function Sidebar() {
     { component: <Live />, name: "Live",value: "live" },
     { componet: <Settings />, name: "Settings",value: "settings" },
   ];
-  const handleNavigate =()=>{
-      navigate('/dashboard')
+  const handleNavigate =(value)=>{
+      navigate(`/${value}`)
+      state.currentTab = value
   }
+  
   return (
     <div className=" fixed z-10 flex flex-col  items-center w-full lg:w-[12rem]  background-gradiant h-[90px] lg:min-h-screen ">
       <div className=" flex items-center justify-between w-full z-50 px-10 py-2 lg:py-0 lg:min-w-[200px]">
         
-        <div className="logo w-6 z-50 pt-3 cursor-pointer" onClick={handleNavigate}>
+        <div className="logo w-6 z-50 pt-3 cursor-pointer" onClick={()=>handleNavigate("dashboard")}>
           <img src={DashboardLogo} />
         </div>
         {snap.deviceType !== "Mobile" && (
           <div className="text-white pt-7 font-medium text-md cursor-pointer">
-            <h1 onClick={handleNavigate}>Sky Stream</h1>
+            <h1 onClick={()=>handleNavigate("dashboard")}>Sky Stream</h1>
           </div>
         )}
         
@@ -59,7 +62,7 @@ function Sidebar() {
         }`}
       >
         {obj.map((item, index) => (
-          <Tab key={index} {...item} />
+          <Tab key={index} {...item} handleClick={handleNavigate}/>
         ))}
       </div>
     </div>

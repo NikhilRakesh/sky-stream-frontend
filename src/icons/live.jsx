@@ -1,6 +1,10 @@
 import React from "react";
+import state from "../store";
+import { useSnapshot } from "valtio";
 
 function Live() {
+  const snap= useSnapshot(state)
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
