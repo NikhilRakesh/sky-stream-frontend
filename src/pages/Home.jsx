@@ -1,6 +1,6 @@
 
 
-import '../pages/Home.css'
+import "../../src/App.css"
 import Header from '../component/HomeComponent/Header'
 import Banner from '../component/HomeComponent/Banner'
 import Cta from '../component/HomeComponent/Cta'

@@ -5,7 +5,7 @@ import { AiFillPlayCircle } from 'react-icons/ai'
 
 function PreviewLive({Live,handleClose}) {
   return (
-    <div className="fixed inset-0 left-auto right-auto h-screen w-[80%] backdrop-blur-md  justify-center flex items-center z-10 ">
+    <div className="fixed inset-0 left-auto right-auto h-screen w-[80%]  justify-center flex items-center z-10 ">
       <div
         className={`w-[650px] pb-3 h-fit rounded-md border-black border-[1px]  bg-white  ${
           Live ? "z-10" : "-z-10"
@@ -26,8 +26,8 @@ function PreviewLive({Live,handleClose}) {
             <IoCloseCircleOutline className='cursor-pointer'/>
           </div>
         </div>
-        <div className='bg-gray px-6  w-full h-72'>
-
+        <div className='bg-gray px-6  w-full h-72 flex items-center justify-center'>
+        <AiFillPlayCircle  className='text-blue text-7xl'/>
         </div>
        
           

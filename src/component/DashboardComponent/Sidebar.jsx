@@ -26,9 +26,10 @@ function Sidebar() {
     { component: <Live />, name: "Live",value: "live" },
     { componet: <Settings />, name: "Settings",value: "settings" },
   ];
-  const handleNavigate =(value)=>{
+  const handleNavigate =(value,name)=>{
       navigate(`/${value}`)
       state.currentTab = value
+      
   }
   
   return (

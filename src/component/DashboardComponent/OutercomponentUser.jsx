@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineExpandMore } from 'react-icons/md'
 import UserTab from './UserTab'
 import axiosInstance from '../../../Axios'
+import SkelitonList from './SkelitonList';
+
+
 
 function OutercomponentUser() {
   const [data,setData] = useState([])
@@ -37,7 +40,9 @@ function OutercomponentUser() {
     </div>
     <div>
       {
-        loading ? <div className='flex justify-center items-center h-96'>Loading</div> : data?.user?.map((item,index)=><UserTab key={index} {...item}/>)
+        loading ? ( <div><SkelitonList />
+        <SkelitonList /><SkelitonList /><SkelitonList /><SkelitonList /><SkelitonList /> </div>
+      ) : data?.user?.map((item,index)=><UserTab key={index} {...item}/>)
       }
    
     </div>

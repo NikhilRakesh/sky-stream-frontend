@@ -3,13 +3,17 @@ import { FiSearch } from "react-icons/fi";
 import { BiBell } from "react-icons/bi";
 import { MdExpandMore } from "react-icons/md";
 import Searchicon from "./Searchicon";
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
 function DashboardHeader() {
   const [search, setSearch ] = useState(false)
+  const snap = useSnapshot(state)
+  const value = state.currentTab
   return (
     <div className="flex justify-between py-6 px-10 items-center ">
       <div className="text-2xl font-bold ">
-        <h1>Dashboard</h1>
+        <h1>{value == 'dashboard' ? 'Dashboard' : value === 'inbox'? "Inbox" : value ==='user' ? "Users" : value === 'channel' ? "Channel" : value=== 'live' ? "Live" : value ==='settings' ? "Settings" : "Dashboard" }</h1>
       </div>
       <div className="left flex items-center gap-8">
       

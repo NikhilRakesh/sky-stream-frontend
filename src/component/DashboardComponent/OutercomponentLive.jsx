@@ -29,6 +29,16 @@ function OutercomponentLive() {
            <LiveTabs />
            <LiveTabs />
            <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
+           <LiveTabs />
            
         </div>
        
