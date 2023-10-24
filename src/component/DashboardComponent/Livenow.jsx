@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import LivenowTab from '../LivenowTab';
+import LivenowTab from './LivenowTab';
 
 function Livenow({ color, name, time }) {
   const socialMedia = [

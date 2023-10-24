@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import { useSnapshot } from 'valtio';
 import state from './store';
+import Login from './pages/Login';
 
 function App() {
   const [viewPort, setViewPort] = useState(window.innerWidth);
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Dashboard />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </div>
       </ChakraProvider>

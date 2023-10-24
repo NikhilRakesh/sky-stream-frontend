@@ -19,7 +19,9 @@ export default {
         orange:"#D8608B",
         liteblue:"#6EE1F8",
         lightgreen:"#30D987",
-        lightorange:"#ed664e"
+        lightorange:"#ed664e",
+        violet:"#4044ED"
+
       }
     },
     
