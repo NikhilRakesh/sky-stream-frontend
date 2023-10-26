@@ -3,6 +3,8 @@ const state = proxy({
     deviceType : '',
     currentTab :"dashboard",
     showContact:false
+    refreshData:"",
+    userData:{},
     
     
 

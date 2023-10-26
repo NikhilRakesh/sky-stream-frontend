@@ -4,10 +4,16 @@ import UserTab from './UserTab'
 import axiosInstance from '../../../Axios'
 import SkelitonList from './SkelitonList';
 import CreateUser from './CreateUser';
+import { snapshot, useSnapshot } from 'valtio';
+import state from '../../store';
 
 
 
 function OutercomponentUser() {
+  
+  const snap = useSnapshot(state)
+
+
   const [data,setData] = useState([])
   const [loading,setLoading] = useState(true)
   const [createuser,setCreateuser] = useState(false)
@@ -20,7 +26,7 @@ function OutercomponentUser() {
        setData(res.data)).then(()=>setLoading(false))  
       .catch((err)=>console.log(err))
    
-  },[])
+  },[snap.refreshData])
   
   return (
     <div className='bg-gray relative'>

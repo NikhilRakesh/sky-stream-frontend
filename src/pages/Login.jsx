@@ -4,9 +4,13 @@ import Loginimg2 from "../../src/assets/images/Loginimg2.png"
 import axiosInstance from "../../Axios";
 import { useNavigate } from "react-router-dom";
 import './input.css'
+import { useSnapshot } from "valtio";
+import state from "../store";
 
 
 function Login() {
+   
+  const snap = useSnapshot(state)
  
   const [user,setUser]= useState({
     email:"",
@@ -18,7 +22,7 @@ function Login() {
   const handleChange = (e)=>{
     const {id,value} = e.target
     setUser({...user,[id]:value})
-    // console.log(user);
+    console.log(user);
   }
 
   const handleSubmit = (e)=>{
@@ -29,6 +33,9 @@ function Login() {
     }
     axiosInstance.post('/users/verify-login/',user).then((res)=>{
       if(res.data.message === "Login successful"){
+        state.userData = res.data.data
+        console.log("state :",state.userData);
+        console.log("User: ",state.userData._id)
        navigate('/dashboard')
       }
       else 

@@ -14,7 +14,7 @@ function MoreUser({ show, handleView, view, ...item }) {
     channelLimit: item.channelLimit,
     id: item._id,
   });
-  console.log(value);
+
   const handlePermmison = () => {
     setTimeout(async () => {
       console.log("value : ",value);
