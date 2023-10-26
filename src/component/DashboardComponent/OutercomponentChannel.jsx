@@ -5,6 +5,7 @@ import axiosInstance from '../../../Axios'
 import { useSnapshot } from 'valtio'
 import state from '../../store'
 import SkelitonList from './SkelitonList'
+import CreateChannel from './CreateChannel'
 
 function OutercomponentChannel() {
   const [channel,setChannel] = useState([])
@@ -23,7 +24,7 @@ function OutercomponentChannel() {
   return (
     <div className=' bg-light'>
         <div className='Heading  w-full flex justify-between bg-light  px-16 py-8 text-blue items-center font-semibold border-[1px]'>
-            <div className='flex gap-2 items-center '> 
+            <div className='flex gap-2 min-w-[180px] items-center'> 
                 <h1>CHANNEL NAME</h1>
                 <MdOutlineExpandMore className='text-xl'/>
             </div>
@@ -34,11 +35,12 @@ function OutercomponentChannel() {
             <div className='min-w-[400px]'>
 
             </div>
-            <div onClick={()=>{setCreateChannel(!createChannel)
+            <div className='cursor-pointer' onClick={()=>{setCreateChannel(!createChannel)
             console.log(createChannel)}}>
-               <button className='bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all'> Create Channel </button>
+               <button className='bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all '> Create Channel </button>
             </div>
-           
+           {
+               createChannel ? <CreateChannel value={createChannel} handleClose={()=>setCreateChannel(false)} /> :null     }
         </div>
       <div>
       {
