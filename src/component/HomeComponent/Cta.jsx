@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import Button from './Button'
 
 function Cta() {
@@ -14,7 +14,7 @@ function Cta() {
         <p>Enjoy a limited-time offer! Get 10% off when you choose Sky Streaming Technology for seamless, high-quality broadcasting. Elevate your streaming experience today!</p>
       </div>
     </div>
-      <Button />
+      <Button  />
   </div>
   
   )

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useSnapshot } from 'valtio'
 import state from '../../store'
 import Migration from '../../../src/assets/images/migration.png'
@@ -20,7 +20,7 @@ function Section3() {
         Experience hassle-free streaming with Sky Streaming Technology. Our cutting-edge technology ensures uninterrupted, low-latency broadcasting, so you can focus on delivering content without worries.
         </p>
         <div>
-          <button className='box-gradiant bg-opacity-100 text-white px-6 py-2 rounded-3xl mt-6'>Contact Sales</button>
+          <button onClick={()=>state.showContact = true} className='box-gradiant bg-opacity-100 text-white px-6 py-2 rounded-3xl mt-6'>Contact Sales</button>
         </div>
         </div>
         {

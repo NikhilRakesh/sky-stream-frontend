@@ -23,8 +23,13 @@
     }
 
 .contact-box-gradiant{
+    background: linear-gradient(225deg, rgba(212, 8, 140, 0.70) 14.64%, rgba(204, 8, 140, 0.70) 17.47%, rgba(133, 7, 138, 0.70) 47.17%, rgba(89, 6, 137, 0.70) 68.39%, rgba(72, 6, 137, 0.70) 79%);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
         border-radius: 30px;
-background: linear-gradient(225deg, rgba(212, 8, 140, 0.70) 14.64%, rgba(204, 8, 140, 0.70) 17.47%, rgba(133, 7, 138, 0.70) 47.17%, rgba(89, 6, 137, 0.70) 68.39%, rgba(72, 6, 137, 0.70) 79%);
+
     }
   
     /* Add this to your CSS */
@@ -36,3 +41,8 @@ background: linear-gradient(225deg, rgba(212, 8, 140, 0.70) 14.64%, rgba(204, 8,
     scrollbar-width: none;
   }
   
+
+  .button-gradient{
+    border-radius: 50px;
+        background: linear-gradient(225deg, #D4088C 14.64%, #CC088C 17.47%, #85078A 47.17%, #590689 68.39%, #480689 79%);
+  }

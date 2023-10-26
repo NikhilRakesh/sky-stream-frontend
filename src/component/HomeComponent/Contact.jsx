@@ -1,47 +1,122 @@
-import React, { useState } from 'react';
+import {
+  AiOutlineArrowRight,
+  AiOutlineMail,
+  AiOutlinePhone,
+  AiOutlineClose,
+} from "react-icons/ai";
 
-function Contact({ view, handleClose }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
+import { SlLocationPin } from "react-icons/sl";
+import state from "../../store";
+import { useState } from "react";
 
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePhone = (e) => {
-    setPhone(e.target.value);
-  };
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
+import axiosInstance from "../../../Axios";
+
+function Contact() {
+  const [message, setMessage] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    message: "",
+  });
+
+  const handleContact = (e) => {
+    const { name, value } = e.target;
+
+    setMessage({
+      ...message,
+      [name]: value,
+    });
+
+    console.log(message);
   };
 
   const handleSubmit = () => {
-    console.log(name, email, phone, message);
+    
+      axiosInstance
+        .post("message/send-contact", message)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
   };
 
-  const obj = [
-    { name: 'NAME', handleFunction: handleName },
-    { name: 'EMAIL', handleFunction: handleEmail },
-    { name: 'PHONE', handleFunction: handlePhone },
-    { name: 'MESSAGE', handleFunction: handleMessage },
-  ];
-
   return (
-    <div className="fixed inset-0 left-auto right-auto h-screen w-full justify-center flex items-center z-10">
-      <div
-        className={`w-[55rem] shadow-emerald-200xl h-[36rem] pb-3 contact-box-gradiant ${
-          view ? 'z-10' : '-z-10'
-        }`}
-      >
-        <div className="inputVlues w-[50%] h-full px-4 py-8 flex flex-col items-center justify-center">
-        
+   
+      <div className="fixed inset-0  left-auto right-auto h-screen w-full justify-center  flex items-center z-10 px-3">
+        <div
+          className={` w-full lg:w-[55rem] flex lg:flex-row flex-col-reverse shadow-emerald-200 h-[40rem] lg:h-[36rem] pb-3 contact-box-gradiant z-50 `}
+        >
+          <div className="inputVlues w-full lg:w-[50%] font-light text-white h-[50%] lg:pt-64 flex flex-col items-center justify-center gap-5 lg:px-10 px-5">
+            <div className="flex flex-col w-full">
+              <label className="text-sm  ">NAME</label>
+              <input
+                type="text"
+                onChange={handleContact}
+                name="name"
+                className="bg-transparent border-b-[1px] focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col w-full">
+              <label className="text-sm  ">EMAIL</label>
+              <input
+                type="text"
+                onChange={handleContact}
+                name="email"
+                className="bg-transparent border-b-[1px] focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col w-full">
+              <label className="text-sm  ">PHONE NUMBER</label>
+              <input
+                type="text"
+                onChange={handleContact}
+                name="contact"
+                className="bg-transparent border-b-[1px] focus:outline-none"
+              />
+            </div>
+            <div className="flex flex-col w-full gap-2">
+              <label className="text-sm  ">YOUR MESSAGE</label>
+              <textarea
+                type="text"
+                onChange={handleContact}
+                name="message"
+                className="bg-transparent border-b-[1px] h-32 focus:outline-none "
+              />
+            </div>
+          </div>
+          <div className="w-full lg:w-[50%] h-full text-white font-medium flex flex-col justify-center gap-5 lg:pt-16 lg:pr-10">
+            <h1 className="text-3xl font-bold">Contact Us</h1>
+            <p className="text-start">
+              Our high-bandwidth infrastructure guarantees uninterrupted
+              streaming, even during peak usage, so your audience never misses a
+              moment.
+            </p>
+            <ul>
+              <li className="flex justify-start items-center gap-2">
+                <AiOutlineMail /> hello@skystreaming.com
+              </li>
+              <li className="flex justify-start items-center gap-2">
+                <AiOutlinePhone /> +91 999-999-9999
+              </li>
+              <li className="flex justify-start items-center gap-2">
+                <SlLocationPin /> Trivandrum, India
+              </li>
+            </ul>
+            <button
+              
+              onClick={handleSubmit}
+              className="flex justify-center hover:scale-105 transform items-center button-gradient px-10 text-lg py-3 max-w-fit"
+            >
+              Send <AiOutlineArrowRight />
+            </button>
+          </div>
+          <div
+            className="absolute right-7 hover:scale-105 transform top-5 cursor-pointer"
+            onClick={() => (state.showContact = false)}
+          >
+            <AiOutlineClose fontSize="28px" className="text-white " />
+          </div>
         </div>
       </div>
-    </div>
+
   );
 }
 

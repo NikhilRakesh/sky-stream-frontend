@@ -1,5 +1,4 @@
-import React from 'react'
-import Fb from '../../icons/fb'
+import Fb from '../../icons/Fb'
 import Insta from '../../icons/Insta'
 import Linkdin from '../../icons/Linkdin'
 import Twiter from '../../icons/Twiter'
