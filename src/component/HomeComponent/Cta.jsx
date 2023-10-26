@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
 
 function Cta() {
+
+  
   return (
     <div className='w-full glass-gradiant justify-between lg:items-center gap-6 px-10 py-4 md:py-6 lg:px-40 md:px-20   flex flex-col lg:flex-row'>
     <div className='heading '>

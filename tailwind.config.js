@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        ubuntu: ["Ubuntu", "sans-serif"],
+      },
       colors: {
         primary:"#CF088C",
         white:"#FFFFFF",

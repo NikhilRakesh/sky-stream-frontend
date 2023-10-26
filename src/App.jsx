@@ -12,7 +12,6 @@ function App() {
   const [viewPort, setViewPort] = useState(window.innerWidth);
   
   const snap = useSnapshot(state)
-
   const handleScroll =()=>{
     state.scroolY = window.scrollY 
   }
