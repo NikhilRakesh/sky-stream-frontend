@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
 import './App.css';
 import Home from './pages/Home';
@@ -47,7 +47,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="*" element={<Dashboard />} />
+          <Route path="*" element={snap.userData ? <Dashboard />: <Navigate to='/' /> } />
           <Route path='/login' element={<Login />} />
         </Routes>
       </div>
