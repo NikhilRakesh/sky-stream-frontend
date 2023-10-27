@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { MdAnalytics } from "react-icons/md";
+import {FaQuestion} from "react-icons/fa"
 import DashboardLogo from "../../assets/images/DashboardLogo.png";
 import Tab from "./Tab";
 import Inbox from "../../icons/Inbox";
@@ -55,6 +55,7 @@ function Sidebar() {
         )}
       </div>
 
+     
       <div
         className={`${ 
           snap.deviceType !== "Desktop" ? "background-gradiant" : ""
@@ -66,6 +67,21 @@ function Sidebar() {
           <Tab key={index} {...item} handleClick={handleNavigate}/>
         ))}
       </div>
+      <div className="helpcenter bg-[#1B2B65] px-3 absolute flex-col flex items-center bottom-20 w-[90%] rounded-lg pt-10 pb-5">
+        <div className="h-12 w-12 rounded-full glassG absolute -top-6 flex items-center justify-center">
+           <div className="bg-blue items-center justify-center text-white flex rounded-full w-9 h-9">
+            <FaQuestion />
+           </div>
+           
+        </div>
+        <div className="flex flex-col gap-5">
+        <h1 className="text-white text-sm font-medium">Need Help With Dash?</h1>
+        <button className="bg-blue cursor-pointer hover:scale-105 transition-all hover:bg-[liteblue] rounded-md flex items-center justify-center font-semibold py-2 text-white">Go to help center</button>
+        </div>
+
+      </div>
+
+
     </div>
   );
 }

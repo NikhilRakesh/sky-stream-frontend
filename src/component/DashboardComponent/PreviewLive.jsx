@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { AiFillPlayCircle } from 'react-icons/ai'
 

@@ -23,7 +23,9 @@ export default {
         liteblue:"#6EE1F8",
         lightgreen:"#30D987",
         lightorange:"#ed664e",
-        violet:"#4044ED"
+        violet:"#4044ED",
+        
+
 
       }
     },
