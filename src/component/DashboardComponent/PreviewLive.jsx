@@ -1,8 +1,8 @@
-import React from 'react'
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { AiFillPlayCircle } from 'react-icons/ai'
 
 
+// eslint-disable-next-line react/prop-types
 function PreviewLive({Live,handleClose}) {
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[80%]  justify-center flex items-center z-10 ">

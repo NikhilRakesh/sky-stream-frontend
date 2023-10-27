@@ -3,6 +3,7 @@ import React from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
 
+// eslint-disable-next-line react/prop-types
 function Message({ view, handleClose }) {
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">

@@ -4,9 +4,6 @@ import PreviewLive from './PreviewLive'
 
 function LiveTabs({item}) {
   const [preview,setPreview] = useState(false)
-  // const [name,startTime] = item
-
-  
 
   return (
     <div className="">
