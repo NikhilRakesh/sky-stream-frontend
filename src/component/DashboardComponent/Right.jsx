@@ -1,4 +1,3 @@
-import React from 'react'
 import DashboardHeader from './DashboardHeader'
 import OutercomponentDashboard from './Outercomponent'
 import OutercomponentInbox from './OutercomponentInbox'
@@ -17,6 +16,7 @@ function Right() {
       <Route path='/user' element={<OutercomponentUser />} />
       <Route path='/live' element={<OutercomponentLive />} />
       <Route path='/channel' element={<OutercomponentChannel />}/>
+      <Route path='*' element={<div>404 not function</div>}/>
     </Routes>
       </div>
    

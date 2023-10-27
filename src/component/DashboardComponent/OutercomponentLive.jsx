@@ -1,4 +1,3 @@
-import React from 'react'
 import { MdOutlineExpandMore } from 'react-icons/md'
 import LiveTabs from './LiveTabs'
 
