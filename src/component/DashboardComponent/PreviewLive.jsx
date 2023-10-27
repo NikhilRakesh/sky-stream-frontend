@@ -20,7 +20,6 @@ function PreviewLive({Live,handleClose}) {
             className="hover:text-red text-3xl"
             onClick={() => {
               handleClose(false);
-              console.log("button");
             }}
           >
             <IoCloseCircleOutline className='cursor-pointer'/>

@@ -1,7 +1,4 @@
-
-import { Stack,Skeleton, } from "@chakra-ui/react";
-
-
+import { Skeleton, } from "@chakra-ui/react";
 const InboxTabLoading = () => {
   return (
     <div className="h-16 w-full flex shadow-lg justify-between items-center px-10">

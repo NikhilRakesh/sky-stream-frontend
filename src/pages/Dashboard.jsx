@@ -1,7 +1,4 @@
-import React from 'react'
-import DashboardHeader from '../component/DashboardComponent/DashboardHeader'
 import Sidebar from '../component/DashboardComponent/Sidebar'
-import Livenow from '../component/DashboardComponent/Livenow'
 import Right from '../component/DashboardComponent/Right'
 
 function Dashboard() {

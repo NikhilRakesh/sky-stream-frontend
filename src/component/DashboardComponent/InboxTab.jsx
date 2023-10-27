@@ -1,7 +1,7 @@
 import React from 'react'
 
-function InboxTab() {
-
+function InboxTab({...items}) {
+  console.log(items)
   return (
     <div className='border-b-2 border border-b-gray shadow-lg  flex w-full justify-between bg-white rounded-lg px-10 h-16 items-center'>
       <div className='name flex gap-3 items-center font-semibold'> 
