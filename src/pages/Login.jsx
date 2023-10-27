@@ -8,7 +8,8 @@ import state from "../store";
 
 
 
-function Login() {
+function Login
+() {
   const [user,setUser]= useState({
     email:"",
     password:""
@@ -51,10 +52,10 @@ function Login() {
       <div className="absolute md:bottom-[-10rem] md:left-[-10rem]  md:w-[30rem] bottom-[-20rem] left-[-10rem]">
    <img src={Loginimg2} />
       </div>
-
-    <div className="body w-96 h-fit justify-center flex flex-col gap-10 items-center ">
+      
+      <div className="body w-96 h-fit justify-center flex flex-col gap-10 items-center ">
        <div className="text-white">
-        <h1 className="text-4xl font-ubuntu ">Sky Streaming</h1>
+        <h1 className="text-4xl font-ubuntu ">Sky Stream</h1>
        </div>
        <div className="flex flex-col gap-16">
        <div className=" flex flex-col gap-6">
@@ -70,6 +71,9 @@ function Login() {
   <label htmlFor="name" className="form__label">
      Password
   </label>
+</div >
+<div className="text-slate-400 cursor-pointer text-sm flex justify-end hover:underline hover:text-white ">
+   <h1>Forgotten Password?</h1>
 </div>
        </div>
        <button onClick={handleSubmit} className="hover:cursor-pointer w-[22.5rem] flex items-center justify-center h-fit py-2 bg-violet rounded-md hover:scale-105 transition-all ease-in-out text-white text-lg">
@@ -77,9 +81,11 @@ function Login() {
        </button>
        </div>
     </div>
+   
 
     </div>
   );
 }
 
-export default Login;
+export default Login
+;
