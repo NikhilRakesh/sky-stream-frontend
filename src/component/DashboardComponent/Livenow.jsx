@@ -6,12 +6,12 @@ function Livenow({ color, name, time }) {
   const socialMedia = [
     { color: 'blue', name: 'Facebook', time: '00:00:00' },
     { color: 'purple', name: 'Instagram', time: '00:00:00' },
-    { color: 'ligtblue', name: 'Twitter', time: '00:00:00' },
+    { color: 'liteblue', name: 'Twitter', time: '00:00:00' },
     { color: 'red', name: 'Youtube', time: '00:00:00' },
   ];
 
   return (
-    <div className='bg-white rounded-xl w-[481px] h-72 relative'>
+    <div className='bg-white rounded-xl w-[481px] h-72 relative '>
       <div className='Headding px-10 py-4 rounded-xl bg-light flex border-b-2 items-center justify-between h-fit'>
         <div className='flex gap-5 items-center'>
           <div className='circle rounded-full w-[30px] h-[30px] bg-red'></div>

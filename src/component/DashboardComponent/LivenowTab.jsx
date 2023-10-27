@@ -9,7 +9,7 @@ function LivenowTab({color,name,time}) {
           <div className={`rounded-full w-[10px] h-[10px] bg-${color} mt-[2px]`}></div>
           <h1 className=' font-bold'>{name}</h1>
           </div>
-          
+        
           <h1 className=' font-bold'>{time}</h1>
         </div>
     </div>

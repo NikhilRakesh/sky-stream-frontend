@@ -46,3 +46,14 @@
     border-radius: 50px;
         background: linear-gradient(225deg, #D4088C 14.64%, #CC088C 17.47%, #85078A 47.17%, #590689 68.39%, #480689 79%);
   }
+
+  .glassG{
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.2px);
+    -webkit-backdrop-filter: blur(13.2px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  
