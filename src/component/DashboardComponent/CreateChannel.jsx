@@ -46,10 +46,10 @@ const CreateChannel = ({value,handleClose}) => {
         </div>
       </div>
       <div className='px-10 py-6'>
-        
+        <form onChange={handleChange} onSubmit={handleSubmit} >
       <div className='  rounded-lg text-black flex justify-between'>
         <div className='flex flex-col gap-3 '>
-            <label htmlFor='name' className='text-sm'>Channel Name</label>
+            <label htmlFor='name' className='text-sm'  >Channel Name</label>
             <input id='name' type='text' className='outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 '/>
         </div>
         <div className='flex flex-col gap-3 '>
@@ -62,8 +62,9 @@ const CreateChannel = ({value,handleClose}) => {
         </div>
       </div>
       <div className='pt-8 flex justify-end'>
-        <button onClick={handleSubmit} className='hover:scale-105 transition-all bg-blue rounded-lg text-white px-3 py-2'>Create Channel</button>
+        <button type='submit' className='hover:scale-105 transition-all bg-blue rounded-lg text-white px-3 py-2'>Create Channel</button>
         </div>
+        </form>
       </div>
      
         
