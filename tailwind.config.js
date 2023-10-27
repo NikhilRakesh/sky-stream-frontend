@@ -18,7 +18,7 @@ export default {
         blue:"#017EFA",
         black:"#000",
         light:"#F8F8F8",
-        purple:"#5B078F",
+        purple:"#ff5f4a",
         orange:"#D8608B",
         liteblue:"#6EE1F8",
         lightgreen:"#30D987",
