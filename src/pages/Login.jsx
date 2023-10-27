@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import  {  useState } from "react";
 import Loginimg1 from "../../src/assets/images/Loginimg1.png"
 import Loginimg2 from "../../src/assets/images/Loginimg2.png"
 import axiosInstance from "../../Axios";
 import { useNavigate } from "react-router-dom";
 import './input.css'
-import { useSnapshot } from "valtio";
 import state from "../store";
 
 
+
 function Login() {
-   
-  const snap = useSnapshot(state)
- 
   const [user,setUser]= useState({
     email:"",
     password:""
@@ -21,29 +18,27 @@ function Login() {
   
   const handleChange = (e)=>{
     const {id,value} = e.target
-    setUser({...user,[id]:value})
-    console.log(user);
+  setUser({...user,[id]:value})
   }
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    console.log(user);
     if(!user.email || !user.password){
      return alert("Please fill all the fields")
     }
     axiosInstance.post('/users/verify-login/',user).then((res)=>{
       if(res.data.message === "Login successful"){
+        const userData = res.data.data
+        localStorage.setItem('user',JSON.stringify(userData))
+        localStorage.setItem('user_id',res.data.data._id)
         state.userData = res.data.data
-        console.log("state :",state.userData);
-        console.log("User: ",state.userData._id)
        navigate('/dashboard')
       }
       else 
-    
       {
         alert("Invalid Credentials")
       }
-    } ).catch((err)=>console.log("error :",err))
+    } ).catch((err)=>console.log("error:",err))
   }
 
  

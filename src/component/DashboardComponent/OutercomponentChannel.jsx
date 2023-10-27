@@ -13,11 +13,11 @@ function OutercomponentChannel() {
   const snap = useSnapshot(state)
 
   useEffect(()=>{
-    console.log(snap.userData._id)
-     axiosInstance.get(`/channel/${snap.userData._id}`).then((res)=>{
+ const user =localStorage.getItem('user')
+    console.log(user)
+     axiosInstance.get(`/channel/${snap.userId}`).then((res)=>{
       console.log(res.data)
       setChannel(res.data)
-
      }).then(()=>setLoading(false)).catch((err)=>console.log(err))
   },[snap.refreshData])
   return (

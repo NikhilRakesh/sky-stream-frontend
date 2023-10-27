@@ -3,7 +3,6 @@ import InboxTab from './InboxTab'
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import axiosInstance from '../../../Axios'
 import InboxTabLoading from './InboxTabLoading'
-import { Skeleton, SkeletonCircle } from '@chakra-ui/react'
 
 function OutercomponentInbox() {
 

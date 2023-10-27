@@ -1,5 +1,5 @@
 
-import { Stack,Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import { Stack,Skeleton, } from "@chakra-ui/react";
 
 
 const InboxTabLoading = () => {

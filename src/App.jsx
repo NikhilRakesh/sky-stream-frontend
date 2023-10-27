@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
 import './App.css';
@@ -16,10 +16,9 @@ function App() {
     state.scroolY = window.scrollY 
   }
 
-  useEffect(() => {
-    
-    window.addEventListener("resize", handleScroll);
-    
+  useEffect(() => { 
+    setViewPort(window.innerWidth)
+   window.addEventListener("resize", handleScroll);
    if(viewPort < 768){
     state.deviceType = "Mobile";
 
@@ -41,18 +40,23 @@ function App() {
 
 
   return (
-  
-  <BrowserRouter>
-  <ChakraProvider>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={snap.userData ? <Dashboard />: <Navigate to='/' /> } />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </div>
+    <BrowserRouter>
+      <ChakraProvider>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="*"
+              element={snap.userData ? <Dashboard /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/login"
+              element={snap.userData ? <Navigate to="/dashboard" /> : <Login />}
+            />
+          </Routes>
+        </div>
       </ChakraProvider>
-   </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 
