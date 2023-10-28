@@ -107,7 +107,7 @@ function MoreUser({ show, handleView, view, ...item }) {
             className="text-2xl"
             onClick={() => {
               handleView(!view);
-              console.log("button");
+           
             }}
           >
             <HiOutlineMail />

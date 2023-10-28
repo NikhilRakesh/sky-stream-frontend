@@ -8,8 +8,9 @@ import state from "../store";
 
 
 
-function Login
-() {
+function Login() {
+  
+
   const [user,setUser]= useState({
     email:"",
     password:""
@@ -72,7 +73,10 @@ function Login
      Password
   </label>
 </div >
-<div className="text-slate-400 cursor-pointer text-sm flex justify-end hover:underline hover:text-white ">
+<div onClick={(e)=>{
+  e.preventDefault()
+  navigate('/forgott')
+}} className="text-slate-400 cursor-pointer text-sm flex justify-end hover:underline hover:text-white ">
    <h1>Forgotten Password?</h1>
 </div>
        </div>

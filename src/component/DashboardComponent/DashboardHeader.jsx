@@ -5,12 +5,13 @@ import { MdExpandMore } from "react-icons/md";
 import Searchicon from "./Searchicon";
 
 import state from "../../store";
+import Dropdown from "./Dropdown";
 
 function DashboardHeader() {
   const [search, setSearch ] = useState(false)
   const value = state.currentTab
   return (
-    <div className="flex justify-between py-6 px-10 items-center ">
+    <div className="flex justify-between py-6 px-14 items-center ">
       <div className="text-2xl font-bold ">
         <h1>{value == 'dashboard' ? 'Dashboard' : value === 'inbox'? "Inbox" : value ==='user' ? "Users" : value === 'channel' ? "Channel" : value=== 'live' ? "Live" : value ==='settings' ? "Settings" : "Dashboard" }</h1>
       </div>
@@ -33,10 +34,8 @@ function DashboardHeader() {
         <div className="account flex items-center gap-5">
           <div className="rounded-full h-12 w-12 bg-gray"></div>
           <div className="font-bold">Visakh</div>
-          <div ><MdExpandMore /></div>
-          {
-
-          }
+          <div ><Dropdown /></div>
+          
         </div>
       </div>
     </div>
