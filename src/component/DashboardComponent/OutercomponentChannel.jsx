@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { MdOutlineExpandMore } from 'react-icons/md'
 import ChannelTab from './ChannelTab'
 import axiosInstance from '../../../Axios'
@@ -20,7 +20,7 @@ function OutercomponentChannel() {
       console.log(res.data)
       setChannel(res.data)
      }).then(()=>setLoading(false)).catch((err)=>console.log(err))
-  },[snap.refreshData])
+  },[snap.refreshData, snap.userId])
   return (
     <div className=' bg-light'>
         <div className='Heading  w-full flex justify-between bg-light  px-16 py-8 text-blue items-center font-semibold border-[1px]'>

@@ -32,8 +32,7 @@ const SkeletonElement = ({ width, height }) => {
   };
   
   export { SkeletonElement, SkeletonText };
-  
-  
+ 
 
 function SkelitonList() {
   return (

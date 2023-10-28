@@ -39,10 +39,9 @@ function OutercomponentInbox() {
             <InboxTabLoading />
             <InboxTabLoading />
       
-            
           </>
         ) : (
-          inbox?.map((item) => <InboxTab {...item} key={item._id} />)
+          inbox?.map((item,index) => <InboxTab {...item} key={index} />)
         )}
       </div>
     </div>

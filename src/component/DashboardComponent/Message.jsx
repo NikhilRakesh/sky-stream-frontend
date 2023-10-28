@@ -4,6 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
 import axiosInstance from "../../../Axios";
 
+// eslint-disable-next-line react/prop-types
 function Message({ view, handleClose,...item }) {
   const [formData, setFormData] = useState({
     to:item._id,
