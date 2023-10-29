@@ -6,6 +6,7 @@ import { useSnapshot } from 'valtio'
 import state from '../../store'
 import SkelitonList from './SkelitonList'
 import CreateChannel from './CreateChannel'
+import Swal from 'sweetalert2'
 
 function OutercomponentChannel() {
   const [channel,setChannel] = useState([])
@@ -13,13 +14,21 @@ function OutercomponentChannel() {
   const [createChannel,setCreateChannel] = useState(false)
   const snap = useSnapshot(state)
 
+
   useEffect(()=>{
- const user =localStorage.getItem('user')
-    console.log(user)
      axiosInstance.get(`/channel/${snap.userId}`).then((res)=>{
-      console.log(res.data)
       setChannel(res.data)
-     }).then(()=>setLoading(false)).catch((err)=>console.log(err))
+     }).then(()=>setLoading(false)).catch((err)=>{
+      
+       if (err.response.status === 401) {
+        Swal.fire({
+          title: "Not Authorized",
+          text: "You are not authorized to perform this action.",
+          icon: "error",
+        });
+       }
+
+      console.log(err)})
   },[snap.refreshData, snap.userId])
   return (
     <div className=' bg-light'>

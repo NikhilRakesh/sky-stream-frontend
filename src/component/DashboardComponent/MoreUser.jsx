@@ -1,30 +1,16 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { Switch } from "@chakra-ui/react";
 import { HiOutlineMail } from "react-icons/hi";
 
 import axiosInstance from "../../../Axios";
+import state from "../../store";
+import { useSnapshot } from "valtio";
 
-function MoreUser({ show, handleView, view, ...item }) {
-  const [value, setValue] = useState({
-    addUser: item.addUser,
-    deleteUser: item.deleteUser,
-    createChannel: item.createChannel,
-    deleteChannel: item.deleteChannel,
-    channelLimit: item.channelLimit,
-    id: item._id,
-  });
+// ! handlePermission has to be done
 
-  const handlePermmison = () => {
-    setTimeout(async () => {
-      console.log("value : ",value);
-    axiosInstance
-      .post("users/user-permission", value)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err))}, 1000)}
-  
-
- 
+function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
   return (
     <div>
       <div
@@ -43,43 +29,36 @@ function MoreUser({ show, handleView, view, ...item }) {
 
           <Switch
             id="createUser"
+            name="addUser"
             isChecked={value.addUser ? true : false}
-            onChange={async(prevValu) =>
-              {await setValue({ ...value, addUser: !value.addUser }) 
-              handlePermmison()
-            }
-              
-            }
+            onChange={handleChange}
           />
         </div>
         <div className="DeleteUser flex flex-col items-center gap-2 cursor-pointer">
           <label htmlFor="DeleteUser">Delete User</label>
           <Switch
-            id="createUser"
+            id="DeleteUser"
+            name="deleteUser"
             isChecked={value.deleteUser ? true : false}
-            onChange={(prevValu) =>
-              setValue({ ...value, deleteUser: !value.deleteUser })
-            }
+            onChange={handleChange}
           />
         </div>
         <div className="createChanel flex flex-col items-center gap-2 cursor-pointer">
           <label htmlFor="createChannel">Create Channel</label>
           <Switch
-            id="createUser"
+            id="createChannel"
+            name="createChannel"
             isChecked={value.createChannel ? true : false}
-            onChange={(prevValu) =>
-              setValue({ ...value, createChannel: !value.createChannel })
-            }
+            onChange={handleChange}
           />
         </div>
         <div className="DeleteChanel flex flex-col items-center gap-2 cursor-pointer">
-          <label htmlFor="Delete Channel">Delete Channel</label>
+          <label htmlFor="DeleteChannel">Delete Channel</label>
           <Switch
-            id="createUser"
+            id="DeleteChannel"
+            name="deleteChannel"
             isChecked={value.deleteChannel ? true : false}
-            onChange={(prevValu) =>
-              setValue({ ...value, deleteChannel: !value.deleteChannel })
-            }
+            onChange={handleChange}
           />
         </div>
         <div className="ChanelLimit flex flex-col items-center gap-2 cursor-pointer">
@@ -87,15 +66,16 @@ function MoreUser({ show, handleView, view, ...item }) {
           <select
             name="limit"
             id="limit"
-          value={value.channelLimit}
+            value={value.channelLimit}
             className="w-10  outline-1 outline"
-            onChange={(e) => {
-              const selectedValue = parseInt(e.target.value);
-              setValue({ ...value, channelLimit: selectedValue });
-            }}
+            onChange={handleChange}
           >
             {[...Array(50)].map((item, index) => (
-              <option defaultValue={value.channelLimit} key={index} value={index + 1}>
+              <option
+                defaultValue={value.channelLimit}
+                key={index}
+                value={index + 1}
+              >
                 {index + 1}
               </option>
             ))}
@@ -118,4 +98,4 @@ function MoreUser({ show, handleView, view, ...item }) {
   );
 }
 
-export default MoreUser
+export default MoreUser;

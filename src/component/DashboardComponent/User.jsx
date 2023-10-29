@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import {PiUsersFourDuotone} from 'react-icons/pi'
 import axiosInstance from '../../../Axios'
 import { useSnapshot } from 'valtio'
@@ -8,19 +8,16 @@ import UserListDash from './UserListDash'
 function User() {
   const snap = useSnapshot(state)
   const [userdata,setUserdata] = useState()
-  
 
   useEffect(()=>{
 
     axiosInstance.get('/users')
     .then((res)=>
-     setUserdata(res.data)).then(()=> state.refreshData = res.data)
+     setUserdata(res.data)).then((res)=> state.refreshData = !snap.refreshData)
     .catch((err)=>console.log(err))
  
 },[snap.refreshData])
 
-
-console.log("userData: ",userdata);
 
   return (
     <div className='w-[481px] bg-white rounded-xl'>

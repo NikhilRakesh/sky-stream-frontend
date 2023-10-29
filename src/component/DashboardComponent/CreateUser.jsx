@@ -3,44 +3,12 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import { Checkbox } from '@chakra-ui/react'
 import axiosInstance from '../../../Axios';
 import state from '../../store';
+import { useSnapshot } from 'valtio';
 
 
-function CreateUser({value,handleClose}) {
+function CreateUser({value,handleClose,handleChange,handleSubmit}) {
 
-  
-    
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    domain: "",
-    color: "",
-    limit:"",
-    expiryDate: "",
-    addUser: true,
-    deleteUser: false,
-    createChannel: false,
-    deleteChannel: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, value,type,checked } = e.target
-    const newValue = type === 'checkbox' ? checked : value
-    setFormData({ ...formData, [name]: newValue })
-    console.log(formData.limit);
-
-  }
-    const handleSubmit =(e)=>{
-        e.preventDefault()
-        console.log("Clicked :",formData);
-        axiosInstance.post('/users/6537e7fc196d01d19ed28e53/create-user/',formData).then((res)=>{
-          state.refreshData= res.data.data
-          console.log("response :",res.data.data);
-        }).catch((err)=>console.log("error :",err))
-    }
-
-  
-    
+ 
 
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">

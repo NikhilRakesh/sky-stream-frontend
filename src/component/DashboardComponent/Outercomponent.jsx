@@ -1,4 +1,3 @@
-import React from 'react'
 import Livenow from './Livenow'
 import Meter from './Meter'
 import Preview from './Preview'

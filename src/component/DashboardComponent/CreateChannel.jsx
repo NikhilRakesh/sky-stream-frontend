@@ -11,6 +11,7 @@ const CreateChannel = ({value,handleClose}) => {
         domain: "",
         streamKey: "",
     })
+
    
     const handleChange =(e)=>{
         const {id,value} = e.target
@@ -19,9 +20,13 @@ const CreateChannel = ({value,handleClose}) => {
     const handleSubmit =(e)=>{
         e.preventDefault()
         axiosInstance.post(`/channel/${state.userData._id}`,formData).then((res)=>{
-         console.log(res.data.message)
-         state.refreshData = res.data.data
-        }).catch((err)=>console.log("Erorr :",err))
+      
+         state.refreshData = !snap.refreshData
+            handleClose(false);
+        
+        }).catch((err)=>{console.log("Erorr :",err)
+        
+      })
     }
 
   return (
@@ -39,7 +44,6 @@ const CreateChannel = ({value,handleClose}) => {
           className="hover:text-red text-3xl text-black"
           onClick={() => {
             handleClose(false);
-            console.log("button");
           }}
         >
           <IoCloseCircleOutline className='cursor-pointer'/>
