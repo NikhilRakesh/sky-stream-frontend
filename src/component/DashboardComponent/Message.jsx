@@ -1,10 +1,35 @@
 import { Checkbox } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
+import axiosInstance from "../../../Axios";
 
 // eslint-disable-next-line react/prop-types
-function Message({ view, handleClose }) {
+function Message({ view, handleClose,...item }) {
+  const [formData, setFormData] = useState({
+    to:item._id,
+      subject:"",
+      message:"",
+      block:false
+  });
+
+  const handleChange = (e)=>{
+
+    const {name,value,type,checked} = e.target
+    const newValue = type === 'checkbox' ? checked : value
+    setFormData({ ...formData, [name]: newValue })
+    }
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    console.log("Clicked :",formData);
+    axiosInstance.post(`/message/send-message/${item._id}`,formData).then((res)=>{
+      console.log("Message: ",res.data.message)
+    }).catch(err=>console.log("error: ",err))
+  }
+
+  // console.log(formData);
+
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">
       <div
@@ -24,48 +49,42 @@ function Message({ view, handleClose }) {
             <IoCloseCircleOutline />
           </div>
         </div>
-        <div className="body flex px-10 py-5 gap-7 flex-wrap w-full items-center">
-          <div className="To w-full h-10 items-center flex px-5  border-black border-[1px] gap-4">
-            <h1 className="font-semibold text-gray">To:</h1>
-            <input
-              type="text"
-              className="w-[90%] bg-transparent outline-none border-b-2 "
-              placeholder=""
-            />
-          </div>
-          <div className="body px-10 py-4 border-black w-full gap-4 flex flex-wrap border-[1px]">
-            <div className="flex py-4 h-10 items-center w-full  border-gray gap-5">
-              <label className="text-sm">Subject:</label>
-              <input
-                type="text"
-                className="h-10 w-full bg-transparent border-2 focus:outline-none "
-              />
-            </div>
-            <div className="h-full w-full flex gap-2">
-              <label className="text-sm ">Message:</label>
-              <textarea
-                type="text"
-                className="bg-transparent w-full border-2 focus:outline-none h-24"
-                placeholder=""
-              ></textarea>
-            </div>
-          </div>
-          
+        <form onChange={handleChange} onSubmit={handleSubmit} >
+          <div className="body flex px-10 py-5 gap-7 flex-wrap w-full items-center">
          
+            <div className="body px-10 py-4 border-black w-full gap-4 flex flex-wrap border-[1px]">
+              <div className="flex py-4 h-10 items-center w-full  border-gray gap-5">
+                <label htmlFor="subject" className="text-sm">Subject:</label>
+                <input
+                  type="text" name="subject" 
+                  className="h-10 w-full px-2  bg-transparent border-2 focus:outline-none "
+                />
+              </div>
+              <div className="h-full w-full flex gap-2">
+                <label htmlFor="message" className="text-sm ">Message:</label>
+                <textarea 
+                  type="text"
+                  name="message"
+                  className="px-2 bg-transparent w-full border-2 focus:outline-none h-24"
+                  placeholder=""
+                ></textarea>
+              </div>
+            </div>
           </div>
           <div className="flex gap-2 items-center">
-            <Checkbox colorScheme="blue"  className="ml-10 outline outline-[1px]"/>
-            <h1 className="text-red font-semibold">Block this User</h1>
+            <Checkbox type="checkbox" name="block" 
+              colorScheme="blue"
+              className="ml-10 outline outline-[1px]"
+            />
+            <label className="text-red font-semibold">Block this User</label>
           </div>
           <div className="flex justify-end px-9 ">
-          <div className="bg-blue rounded-xl hover:scale-105 transform cursor-pointer  px-4 py-2 flex items-center text-white w-fit h-fit gap-x-2">
-          <h1>Sumbit</h1>
-          <VscSend className=""/>
+            <button className="bg-blue rounded-xl hover:scale-105 transform cursor-pointer  px-4 py-2 flex items-center text-white w-fit h-fit gap-x-2">
+              <h1>Sumbit</h1>
+              <VscSend className="" />
+            </button>
           </div>
-          </div>
-        <div className="h-2">
-
-        </div>
+        </form>
       </div>
     </div>
   );

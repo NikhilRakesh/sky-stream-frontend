@@ -111,7 +111,7 @@ const handleChange =  (e) => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        {view ? <Message view={view} handleClose={setView} /> : null}
+        {view ? <Message view={view} handleClose={setView} {...item} /> : null}
       </div>
       {show ? (
         <div className="flex flex-col transition-all ease-in-out duration-1000">

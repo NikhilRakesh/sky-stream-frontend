@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import { useSnapshot } from 'valtio';
 import state from './store';
 import Login from './pages/Login';
+import ForgottPassword from './pages/ForgottPassword';
 
 function App() {
   const [viewPort, setViewPort] = useState(window.innerWidth);
@@ -45,6 +46,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path='/forgott' element={snap.userData ?  <Navigate to="/dashboard" />  :<ForgottPassword />}/>
             <Route
               path="*"
               element={snap.userData ? <Dashboard /> : <Navigate to="/" />}

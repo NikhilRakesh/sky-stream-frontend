@@ -58,7 +58,9 @@ const CreateChannel = ({value,handleClose}) => {
         </div>
         <div className='flex flex-col gap-3 '>
             <label htmlFor='domain' className='text-sm'>Domain</label>
-            <input id='domain' type='text' className='outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 '/>
+            <select id='domain' type='text' className='outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 ' >
+              <option id='domain' defaultValue="skystream.com">skystream.com</option>
+            </select>
         </div>
         <div className='flex flex-col gap-3 '>
             <label htmlFor='streamKey' className='text-sm'>Stream Key</label>
