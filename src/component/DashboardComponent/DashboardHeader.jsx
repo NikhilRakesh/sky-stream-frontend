@@ -9,6 +9,7 @@ import Dropdown from "./Dropdown";
 
 function DashboardHeader() {
   const [search, setSearch ] = useState(false)
+  
   const value = state.currentTab
   return (
     <div className="flex justify-between py-6 px-14 items-center ">

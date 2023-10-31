@@ -24,7 +24,7 @@ function Sidebar() {
     { conponent: <Users />, name: "Users",value: "user" },
     { component: <Channel />, name: "Channel",value: "channel" },
     { component: <Live />, name: "Live",value: "live" },
-    { componet: <Settings />, name: "Settings",value: "settings" },
+    { componet: <Settings />, name: "Domain",value: "domain" },
   ];
   const handleNavigate =(value,name)=>{
       navigate(`/${value}`)

@@ -5,6 +5,7 @@ import OutercomponentUser from './OutercomponentUser'
 import OutercomponentLive from './OutercomponentLive'
 import { Route, Routes } from 'react-router-dom'
 import OutercomponentChannel from './OutercomponentChannel'
+import OutercomponentDomain from './OutercomponentDomain'
 
 function Right() {
   return (
@@ -16,6 +17,7 @@ function Right() {
       <Route path='/user' element={<OutercomponentUser />} />
       <Route path='/live' element={<OutercomponentLive />} />
       <Route path='/channel' element={<OutercomponentChannel />}/>
+      <Route path='/domain' element={<OutercomponentDomain />}/>
       <Route path='*' element={<div>404 not function</div>}/>
     </Routes>
       </div>
