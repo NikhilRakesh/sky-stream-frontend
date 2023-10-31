@@ -53,18 +53,14 @@ function OutercomponentUser() {
   };
 
 
-
-
   useEffect(() => {
     axiosInstance
       .get(`/users/${snap.userId}`)
       .then((res) =>{
          setData(res.data)
-         console.log(res.data)
       })
       .then((res) => {
-        setLoading(false);
-        
+        setLoading(false)  
       })
       .catch((err) => {
         console.log(err);
@@ -108,6 +104,7 @@ function OutercomponentUser() {
         {createuser ? (
           <CreateUser
             value={createuser}
+            
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleClose={setCreateuser}

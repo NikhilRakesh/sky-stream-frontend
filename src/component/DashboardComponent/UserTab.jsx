@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiTwotoneMinusCircle } from "react-icons/ai";
 import { MdOutlineExpandMore } from "react-icons/md";
 import dateFormat from "dateformat";
@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import axiosInstance from "../../../Axios";
 import state from "../../store";
 import { useSnapshot } from "valtio";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 function UserTab({ ...item }) {
   const [show, setShow] = useState(false);
@@ -40,11 +41,12 @@ function UserTab({ ...item }) {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setValue({ ...value, [name]: newValue });
+    console.log(value);
   };
 
-  useEffect(() => {
-    handlePermission();
-  }, [value]);
+  // useEffect(() => {
+  //   handlePermission();
+  // }, [value]);
 
   const handleDelete = () => {
     Swal.fire({
@@ -60,7 +62,6 @@ function UserTab({ ...item }) {
           .get(`users/delete/${snap.userId}/${item._id}`)
           .then((res) => {
             console.log(res);
-
             state.refreshData = !snap.refreshData;
             Swal.fire("Deleted!", "Your User has been deleted.", "success");
           })
@@ -83,41 +84,59 @@ function UserTab({ ...item }) {
   return (
     <div className="bg-white ">
       <div
-        className={`fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ${
+        className={`fixed inset-0 left-auto  right-auto h-screen w-[90%] justify-center flex items-center z-10 ${
           userDetailsMenu ? "block" : "hidden"
         }`}
       >
         <div
-          className={`w-fit pb-3 py-10 px-5 h-96 rounded-md border-black border-[1px]  bg-white  `}
+          className={`w-96 pb-3 py-10 px-5 h-fit  rounded-md border-black border-[1px] z-20   bg-white relative  `}
         >
-          <div>
-            <div className="W-24 flex">
-              <h1>NAME :</h1>
+          <div
+            className="hover:text-red text-2xl absolute right-5 top-5  cursor-pointer"
+            onClick={() => {
+             
+             setUserDetailsMenu(false);
+             
+            }}
+          >
+            <IoCloseCircleOutline />
+          </div>
+
+          <div className="flex flex-col gap-5">
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">NAME :</h1>
               <h1>{item.name}</h1>
             </div>
-            <div className="W-24 flex">
-              <h1>Email :</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Email :</h1>
               <h1>{item.email}</h1>
             </div>
-            <div className="W-24 flex">
-              <h1>Password :</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Password :</h1>
               <h1>{item.password}</h1>
             </div>
-            <div className="W-24 flex">
-              <h1>Color :</h1>
-              <h1>{item.name}</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Color :</h1>
+              <AiTwotoneMinusCircle
+                className="min-w-[15px] max-w-[15px]"
+                color={item.color}
+              />
             </div>
-            <div className="W-24 flex">
-              <h1>NAME :</h1>
-              <h1>{item.name}</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">domain :</h1>
+              <h1>{item.domain}</h1>
             </div>
-            <div className="W-24 flex">
-              <h1>NAME :</h1>
-              <h1>{item.name}</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Channel Limit :</h1>
+              <h1>{item.channelLimit}</h1>
             </div>
-            <div className="W-24 flex">
-              <h1>NAME :</h1>
-              <h1>{item.name}</h1>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Created Date :</h1>
+              <h1> {dateFormat(item.createdAt, "dd-mm-yy")}</h1>
+            </div>
+            <div className="W-24 flex gap-3">
+              <h1 className="font-extrabold">Expiry Date :</h1>
+              <h1> {dateFormat(item.expiryDate, "dd-mm-yy")}</h1>
             </div>
           </div>
         </div>
