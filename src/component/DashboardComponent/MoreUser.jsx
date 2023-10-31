@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { Switch } from "@chakra-ui/react";
 import { HiOutlineMail } from "react-icons/hi";
-
-import axiosInstance from "../../../Axios";
 import state from "../../store";
 import { useSnapshot } from "valtio";
 
 // ! handlePermission has to be done
 
 function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
+  
+  const snap = useSnapshot(state);
+
   return (
     <div>
       <div
@@ -64,18 +64,13 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
         <div className="ChanelLimit flex flex-col items-center gap-2 cursor-pointer">
           <label htmlFor="limit">Channel Limit</label>
           <select
-            name="limit"
-            id="limit"
-            defaultValue={value.channelLimit}
-            className="w-10  outline-1 outline"
             onChange={handleChange}
+            name="limit"
+            className="w-24 h-10 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            value={snap.userData.channelLimit}
           >
-            {[...Array(50)].map((item, index) => (
-              <option
-                defaultValue={value.channelLimit}
-                key={index}
-                value={index + 1}
-              >
+            {Array.from({ length: 100 }, (_, index) => (
+              <option key={index} value={index + 1}>
                 {index + 1}
               </option>
             ))}
@@ -87,7 +82,6 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
             className="text-2xl"
             onClick={() => {
               handleView(!view);
-           
             }}
           >
             <HiOutlineMail />
