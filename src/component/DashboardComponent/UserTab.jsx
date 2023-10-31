@@ -13,6 +13,7 @@ import { useSnapshot } from "valtio";
 function UserTab({ ...item }) {
   const [show, setShow] = useState(false);
   const [view, setView] = useState(false);
+  const [userDetailsMenu, setUserDetailsMenu] = useState(false);
 
   const snap = useSnapshot(state);
 
@@ -25,7 +26,6 @@ function UserTab({ ...item }) {
     id: item._id,
   });
 
-
   const handlePermission = () => {
     axiosInstance
       .post(`users/user-permission/${item._id}`, value)
@@ -36,15 +36,15 @@ function UserTab({ ...item }) {
       .catch((err) => console.log(err));
   };
 
-const handleChange =  (e) => {
-  const { name, value, type, checked } = e.target;
-  const newValue = type === "checkbox" ? checked : value;
-   setValue({ ...value, [name]: newValue });
- 
-};
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setValue({ ...value, [name]: newValue });
+  };
 
-
-  useEffect(() => {  handlePermission()}, [value]);
+  useEffect(() => {
+    handlePermission();
+  }, [value]);
 
   const handleDelete = () => {
     Swal.fire({
@@ -82,13 +82,56 @@ const handleChange =  (e) => {
 
   return (
     <div className="bg-white ">
+      <div
+        className={`fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ${
+          userDetailsMenu ? "block" : "hidden"
+        }`}
+      >
+        <div
+          className={`w-fit pb-3 py-10 px-5 h-96 rounded-md border-black border-[1px]  bg-white  `}
+        >
+          <div>
+            <div className="W-24 flex">
+              <h1>NAME :</h1>
+              <h1>{item.name}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>Email :</h1>
+              <h1>{item.email}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>Password :</h1>
+              <h1>{item.password}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>Color :</h1>
+              <h1>{item.name}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>NAME :</h1>
+              <h1>{item.name}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>NAME :</h1>
+              <h1>{item.name}</h1>
+            </div>
+            <div className="W-24 flex">
+              <h1>NAME :</h1>
+              <h1>{item.name}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="bg-white flex py-6 px-16  border-b-[0.5px] items-center justify-between border-gray ">
-        <div className="Name gap-3 flex items-center  max-w-[20px]  ">
+        <div
+          className="Name gap-3 flex items-center  max-w-[20px] cursor-pointer "
+          onClick={() => setUserDetailsMenu(true)}
+        >
           <AiTwotoneMinusCircle
             className="min-w-[15px] max-w-[15px]"
             color={item.color}
           />
-          <h1 className="text-lg font-medium ">{item.name}</h1>
+          <h1 className="text-lg font-medium cursor-pointer ">{item.name}</h1>
         </div>
         <div className="Live text-red">{item.status ? "Live" : "Offline"}</div>
         <div className="CreatedDate ">

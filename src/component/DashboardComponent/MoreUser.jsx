@@ -66,7 +66,7 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
           <select
             name="limit"
             id="limit"
-            value={value.channelLimit}
+            defaultValue={value.channelLimit}
             className="w-10  outline-1 outline"
             onChange={handleChange}
           >
