@@ -13,7 +13,7 @@ const CreateChannel = ({value,handleClose}) => {
        axiosInstance.get(`/domain/${snap.userId}`).then(res=>{
           setDomainData(res.data.domain)
           console.log("Response: ",res.data.domain)
-          console.log("Domain Data: ",domaindata)
+         
        }).catch(err=>{
           console.log("Error: ",err)
        })
@@ -73,9 +73,19 @@ const CreateChannel = ({value,handleClose}) => {
         </div>
         <div className='flex flex-col gap-3 '>
             <label htmlFor='domain' className='text-sm'>Domain</label>
-            <select id='domain' type='text' className='outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 ' >
-              <option id='domain' defaultValue="skystream.com">skystream.com</option>
-            </select>
+            <select
+                  onChange={handleChange}
+                  type="text"
+                  name="domain"
+                  className=" rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
+                >
+                  <option>Select Domain</option>
+                  {domaindata?.map((item, index) => (
+                    <option key={index} value={item.domain}>
+                      {item.domain}
+                    </option>
+                  ))}
+                </select>
         </div>
         <div className='flex flex-col gap-3 '>
             <label htmlFor='streamKey' className='text-sm'>Stream Key</label>
