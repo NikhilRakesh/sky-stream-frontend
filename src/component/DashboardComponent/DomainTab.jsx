@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 
 const DomainTab = ({...item}) => {
   const snap = useSnapshot(state);
-  
+
     const handleDelete = () => {
       Swal.fire({
         title: "Delete Domain",
@@ -22,7 +22,7 @@ const DomainTab = ({...item}) => {
           axiosInstance
             .get(`/domain/delete/${item._id}`)
             .then((res) => {
-              console.log(res);
+      
               state.refreshData = !snap.refreshData;
               Swal.fire("Deleted!", "Your Domain has been deleted.", "success");
             })

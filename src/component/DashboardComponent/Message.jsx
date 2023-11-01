@@ -29,9 +29,9 @@ function Message({ view, handleClose,...item }) {
     setError(error)
     if(Object.keys(error).length == 0){
       axiosInstance.post(`/message/send-message/${item._id}`,formData).then((res)=>{
-        console.log("Message: ",res.data.message)
+  
         handleClose(false)
-        console.log(view);  
+      
         Swal.fire({
           title: "Message Sent",
           text: "Your message has been sent successfully.",
@@ -64,7 +64,7 @@ function Message({ view, handleClose,...item }) {
             className="hover:text-red text-2xl cursor-pointer"
             onClick={() => {
               handleClose(false);
-              console.log("button");
+     
             }}
           >
             <IoCloseCircleOutline />

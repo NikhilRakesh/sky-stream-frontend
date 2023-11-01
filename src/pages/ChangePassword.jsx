@@ -13,12 +13,12 @@ const ChangePassword = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log('submitted')
+  
     axiosInstance
       .post("/users/reset-password", { password })
       .then((res) => {
         navigate("/login");
-        console.log(res.data);
+        
       })
       .catch((err) => console.log(err));
   };

@@ -19,7 +19,6 @@ const CreateChannel = ({ value, handleClose }) => {
       .get(`/domain/${snap.userId}`)
       .then((res) => {
         setDomainData(res.data.domain);
-        console.log("Response: ", res.data.domain);
       })
       .catch((err) => {
         console.log("Error: ", err);
@@ -34,8 +33,7 @@ const CreateChannel = ({ value, handleClose }) => {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    console.log("Id: ", id);
-    console.log("Value: ", value);
+   
     setFormData({ ...formData, [id]: value });
   };
   const handleSubmit = (e) => {

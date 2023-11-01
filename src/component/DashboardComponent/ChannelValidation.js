@@ -2,8 +2,7 @@
   export default function ChannelValidation(values){
     const errors = {};
 
-    console.log(values)
-
+  
     
     if(values.name === ""){
         errors.name = "Name is required";

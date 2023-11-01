@@ -17,7 +17,7 @@ function Preview() {
           if (res.data.data.length === 0) {
             return setLive([]);
           }
-          console.log(res.data.data);
+
           setLive(res.data.data);
         })
         .catch((err) => console.log(err));

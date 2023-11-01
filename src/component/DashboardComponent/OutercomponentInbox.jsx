@@ -30,7 +30,7 @@ function OutercomponentInbox() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("Response: ", res.data.message);
+      
         state.refreshData = res.data;
       })
       .catch((err) => console.log("Error: ", err));

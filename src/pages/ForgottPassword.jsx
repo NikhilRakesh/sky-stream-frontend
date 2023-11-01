@@ -16,7 +16,7 @@ const ForgottPassword = () => {
     axiosInstance
       .post("/users/forget-password", { email })
       .then((res) => {
-        console.log(res.data);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -28,7 +28,7 @@ const ForgottPassword = () => {
       axiosInstance
         .post("/users/verify-otp", { token: otp })
         .then((res) => {
-          console.log(res.data);
+         
           navigate("/change-password");
         })
         .catch((err) => console.log(err));

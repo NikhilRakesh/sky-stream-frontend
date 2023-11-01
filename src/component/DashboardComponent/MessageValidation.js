@@ -2,7 +2,6 @@
 export default function MessageValidation(values){
     const errors = {};
 
-    console.log(values)
 
     
     if(values.subject === ""){

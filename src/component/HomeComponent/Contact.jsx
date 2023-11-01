@@ -29,7 +29,7 @@ function Contact() {
       [name]: value,
     });
 
-    console.log(message);
+
   };
 
   const handleSubmit = (e) => {

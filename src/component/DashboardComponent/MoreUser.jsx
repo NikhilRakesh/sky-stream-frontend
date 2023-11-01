@@ -15,7 +15,7 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
   const handeleDelete =()=>{
 
     axiosInstance.get(`/message//delete-message/${snap.userId}/${item._id}`).then((res)=>{
-      console.log(res.data)
+
       state.refreshData = !snap.refreshData
     }).catch((err)=>console.log(err))
   }

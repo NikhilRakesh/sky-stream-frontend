@@ -51,7 +51,7 @@ function StreamLink({ handleClose, view, ...item }) {
     setError(error)
     if (Object.keys(error).length == 0) {
       axiosInstance.post(`push/${snap.userId}/${item._id}`, edge).then((res) => {
-        console.log(res.data);
+    
         state.refreshData = !snap.refreshData;
       });
     }
@@ -68,16 +68,15 @@ function StreamLink({ handleClose, view, ...item }) {
   };
 
   const deleteEdge = (value) => {
-    console.log(value);
-    console.log("delete");
+    
     axiosInstance.get(`push/delete/${value}`).then((res) => {
-      console.log(res);
+     
       state.refreshData = !snap.refreshData;
     });
   };
 
   useEffect(() => {
-    console.log('refreshed');
+    
     const getEdge = async () => {
       await axiosInstance.get(`push/${item._id}`).then((res) => {
         setEdgeData(res.data.data);

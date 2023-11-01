@@ -38,7 +38,6 @@ function OutercomponentUser() {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setFormData({ ...formData, [name]: newValue });
-    console.log(formData.limit);
   };
 
   const handleSubmit = (e) => {

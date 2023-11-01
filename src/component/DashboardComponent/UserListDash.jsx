@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserListDash = ({...item}) => {
-    console.log(item);
+
   return (
     <div>
     <div className='py-4 pr-2 flex justify-between text-sm overflow-hidden'>

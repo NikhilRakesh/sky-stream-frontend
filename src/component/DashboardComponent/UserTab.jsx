@@ -31,7 +31,7 @@ function UserTab({ ...item }) {
     axiosInstance
       .post(`users/user-permission/${item._id}`, permissions) // Assuming the backend endpoint is 'updateUserPermission'
       .then((res) => {
-        console.log(res.data);
+    
         state.refreshData = !snap.refreshData;
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ function UserTab({ ...item }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log(name, value, type, checked)
+
     const newValue = type === "checkbox" ? checked : value;
     setPermissions({ ...permissions, [name]: newValue });
   };
@@ -63,7 +63,7 @@ function UserTab({ ...item }) {
         axiosInstance
           .get(`users/delete/${snap.userId}/${item._id}`)
           .then((res) => {
-            console.log(res);
+        
             state.refreshData = !snap.refreshData;
             Swal.fire("Deleted!", "Your User has been deleted.", "success");
           })

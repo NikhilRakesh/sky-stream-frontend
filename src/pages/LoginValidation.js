@@ -2,8 +2,6 @@
   export default function LoginValidation(values){
     const errors = {};
 
-    console.log(values)
-
     const email_pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const password_pattern = /^[a-zA-Z\d]{8,}$/;
 

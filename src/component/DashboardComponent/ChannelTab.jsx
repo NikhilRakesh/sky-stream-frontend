@@ -23,7 +23,7 @@ function ChannelTab({ ...item }) {
          axiosInstance
            .get(`/channel/delete/${item._id}`, { withCredentials: true })
            .then((res) => {
-             console.log(res.data);
+           
              state.refreshData = !snap.refreshData;
            });
          Swal.fire("Deleted!", "Your item has been deleted.", "success");
@@ -59,8 +59,7 @@ function ChannelTab({ ...item }) {
           className="cursor-pointer min-w-[40px] "
           onClick={() => {
             setView(!view);
-            console.log("clicked");
-            console.log(view);
+      
           }}
         >
           <RiMore2Fill />
