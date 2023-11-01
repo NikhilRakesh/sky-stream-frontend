@@ -1,5 +1,4 @@
-import React from 'react'
-
+/* eslint-disable no-unused-vars */
 import { MdDelete } from 'react-icons/md'
 import axiosInstance from '../../../Axios'
 import { useSnapshot } from 'valtio'

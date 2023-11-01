@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import  { useState } from 'react';
 import { RiMore2Fill } from 'react-icons/ri';
 import StreamLink from './StreamLink';

@@ -1,19 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import dateFormat from "dateformat";
 
-function LivenowTab({...item}) {
-  
+function LivenowTab({ ...item }) {
+  const [liveTime, setLiveTime] = useState("");
 
-  const [liveTime ,setLiveTime] = useState('')
-
-
-  useEffect(()=>{
-    setInterval(()=>{
-      let date = item.startTime
-      let detNow = new Date()
-      setLiveTime( detNow-date ) 
-    },1000)
-  },[])
+  useEffect(() => {
+    setInterval(() => {
+      let date = item.startTime;
+      let detNow = new Date();
+      setLiveTime(detNow - date);
+    }, 1000);
+  }, []);
 
   return (
     <div>
@@ -25,10 +23,13 @@ function LivenowTab({...item}) {
           <h1 className=" font-bold">{item.name}</h1>
         </div>
 
-        <h1 className=" font-bold"> {dateFormat(item.startTime, "dd-mm-yy,H:MM:ss")}</h1>
+        <h1 className=" font-bold">
+          {" "}
+          {dateFormat(item.startTime, "dd-mm-yy,H:MM:ss")}
+        </h1>
       </div>
     </div>
   );
 }
 
-export default LivenowTab
+export default LivenowTab;

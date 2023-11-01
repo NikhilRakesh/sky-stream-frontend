@@ -2,7 +2,6 @@ import { useSnapshot } from 'valtio';
 import Livenow from './Livenow'
 import Meter from './Meter'
 import Preview from './Preview'
-import User from './User'
 import state from '../../store';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../Axios';

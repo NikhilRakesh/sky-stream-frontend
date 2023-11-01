@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { Checkbox } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
 import axiosInstance from "../../../Axios";

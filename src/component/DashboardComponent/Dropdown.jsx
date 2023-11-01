@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { PiSignOutBold } from 'react-icons/pi'
 import "./Dropdown.css"
 

@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { FiSearch } from "react-icons/fi";
-import { BiBell } from "react-icons/bi";
-import Searchicon from "./Searchicon";
-
+/* eslint-disable no-unused-vars */
 import state from "../../store";
 import Dropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";

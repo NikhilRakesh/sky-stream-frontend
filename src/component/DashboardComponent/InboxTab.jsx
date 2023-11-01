@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import  { useState } from "react";
 
 function InboxTab({ name, email, contact, message, _id, onCheckboxChange }) {
   const [checked, setChecked] = useState(false);

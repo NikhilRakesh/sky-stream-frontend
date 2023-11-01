@@ -1,44 +1,46 @@
-import  { useEffect, useState } from 'react'
-import ChannelTab from './ChannelTab'
-import axiosInstance from '../../../Axios'
-import { useSnapshot } from 'valtio'
-import state from '../../store'
-import SkelitonList from './SkelitonList'
-import CreateChannel from './CreateChannel'
-import Swal from 'sweetalert2'
-import CreateDomain from './CreateDomain'
-import DomainValidation from './DomainValidation'
+import { useEffect, useState } from "react";
+import ChannelTab from "./ChannelTab";
+import axiosInstance from "../../../Axios";
+import { useSnapshot } from "valtio";
+import state from "../../store";
+import SkelitonList from "./SkelitonList";
+import CreateChannel from "./CreateChannel";
+import Swal from "sweetalert2";
+import CreateDomain from "./CreateDomain";
+import DomainValidation from "./DomainValidation";
 
 function OutercomponentChannel() {
-  const [createdomain,setCreatedomain] = useState(false)
-  const [domain,setDomain] = useState('')
-  const [channel,setChannel] = useState([])
-  const [loading,setLoading] = useState(true)
-  const [createChannel,setCreateChannel] = useState(false)
-  const [domainerror,setDomainerror] = useState({})
-  const snap = useSnapshot(state)
+  const [createdomain, setCreatedomain] = useState(false);
+  const [domain, setDomain] = useState("");
+  const [channel, setChannel] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [createChannel, setCreateChannel] = useState(false);
+  const [domainerror, setDomainerror] = useState({});
+  const snap = useSnapshot(state);
 
-  const handleChange = (e)=>{
-    setDomain(e.target.value)
-  }
+  const handleChange = (e) => {
+    setDomain(e.target.value);
+  };
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    let error = DomainValidation(domain)
-    setDomainerror(error)
-    console.log("Error: ", error)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let error = DomainValidation(domain);
+    setDomainerror(error);
+    console.log("Error: ", error);
 
-    if(Object.keys(error).length == 0)
-    {
-      axiosInstance.post(`/domain/${snap.userId}`,{domain}).then((res)=>{
-        Swal.fire({
-          title: "Success",
-          text: "Domain Created Successfully",
-          icon: "success",
-        });
-        setCreatedomain(false)
-      }).catch((err)=>{
-        console.log("Error: ",err);
+    if (Object.keys(error).length == 0) {
+      axiosInstance
+        .post(`/domain/${snap.userId}`, { domain })
+        .then((res) => {
+          Swal.fire({
+            title: "Success",
+            text: "Domain Created Successfully",
+            icon: "success",
+          });
+          setCreatedomain(false);
+        })
+        .catch((err) => {
+          console.log("Error: ", err);
           if (err.response.status === 401) {
             Swal.fire(
               "Not Authorized",
@@ -46,32 +48,31 @@ function OutercomponentChannel() {
               "error"
             );
           }
-                
-      })
-    }
-    else
-    {
-      console.log("Validation Error: ",domainerror);
-    }
-   
-  }
-
-
-  useEffect(()=>{
-     axiosInstance.get(`/channel/${snap.userId}`).then((res)=>{
-      setChannel(res.data)
-     }).then(()=>setLoading(false)).catch((err)=>{
-      
-       if (err.response.status === 401) {
-        Swal.fire({
-          title: "Not Authorized",
-          text: "You are not authorized to perform this action.",
-          icon: "error",
         });
-       }
+    } else {
+      console.log("Validation Error: ", domainerror);
+    }
+  };
 
-      console.log(err)})
-  },[snap.refreshData, snap.userId])
+  useEffect(() => {
+    axiosInstance
+      .get(`/channel/${snap.userId}`)
+      .then((res) => {
+        setChannel(res.data);
+      })
+      .then(() => setLoading(false))
+      .catch((err) => {
+        if (err.response.status === 401) {
+          Swal.fire({
+            title: "Not Authorized",
+            text: "You are not authorized to perform this action.",
+            icon: "error",
+          });
+        }
+
+        console.log(err);
+      });
+  }, [snap.refreshData, snap.userId]);
   return (
     <div className=" bg-light">
       <div className="Heading  w-full flex justify-between bg-light  px-16 py-8 text-blue items-center font-semibold border-[1px]">
@@ -85,9 +86,8 @@ function OutercomponentChannel() {
           <div className="cursor-pointer">
             <button
               className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all"
-              onClick={() =>  setCreatedomain(!createdomain)  }
+              onClick={() => setCreatedomain(!createdomain)}
             >
-             
               Add Domain
             </button>
           </div>
@@ -106,7 +106,6 @@ function OutercomponentChannel() {
           }}
         >
           <button className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all ">
-           
             Create Channel
           </button>
         </div>
@@ -147,4 +146,4 @@ function OutercomponentChannel() {
   );
 }
 
-export default OutercomponentChannel
+export default OutercomponentChannel;
