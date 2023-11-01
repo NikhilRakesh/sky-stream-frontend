@@ -7,7 +7,7 @@ import { useSnapshot } from "valtio";
 
 // ! handlePermission has to be done
 
-function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
+function MoreUser({ show,handleChange,value, handleView, view,   }) {
   
   const snap = useSnapshot(state);
 

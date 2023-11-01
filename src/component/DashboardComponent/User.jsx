@@ -1,24 +1,21 @@
-
-import  { useEffect, useState } from 'react'
+import  { useState } from 'react'
 import {PiUsersFourDuotone} from 'react-icons/pi'
-import axiosInstance from '../../../Axios'
 import { useSnapshot } from 'valtio'
 import state from '../../store'
-import UserListDash from './UserListDash'
 function User() {
   const snap = useSnapshot(state)
   const [userdata,setUserdata] = useState()
 
   
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-    axiosInstance.get('/users')
-    .then((res)=>
-     setUserdata(res.data)).then((res)=> state.refreshData = !snap.refreshData)
-    .catch((err)=>console.log(err))
+//     axiosInstance.get('/users')
+//     .then((res)=>
+//      setUserdata(res.data)).then((res)=> state.refreshData = !snap.refreshData)
+//     .catch((err)=>console.log(err))
  
-},[snap.refreshData])
+// },[snap.refreshData])
 
 
   return (

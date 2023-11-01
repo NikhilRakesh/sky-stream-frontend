@@ -1,9 +1,8 @@
-import React from 'react'
+/* eslint-disable react/no-unescaped-entities */
 import Circle from './Circle'
 import Avatar from '../../icons/Avatar';
 import Tick from '../../icons/Tick';
 import Www from '../../icons/Www';
-import Dot from '../../icons/Dot';
 import Line from '../../icons/Dot';
 function Section4() {
     const obj = [
@@ -22,8 +21,8 @@ function Section4() {
         {
             obj.map((item,index)=>(
               <>
-                <Circle key={index} {...item}/>   
-                     {index == 0 ? <div className='lg:pb-16 lg:ml-2 py-20 lg:py-0 lg:rotate-0 rotate-90'> <Line key={index} /></div> : index ==1 ? <div className='lg:rotate-180 -rotate-90'><Line  key={index} /></div> :'' }
+                <Circle key={item.des} {...item}/>   
+                     {index == 0 ? <div key={index} className='lg:pb-16 lg:ml-2 py-20 lg:py-0 lg:rotate-0 rotate-90'> <Line  /></div> : index ==1 ? <div className='lg:rotate-180 -rotate-90'><Line   /></div> :'' }
              </>
             ))  
         }
