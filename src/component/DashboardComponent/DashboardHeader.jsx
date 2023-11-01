@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../Axios";
 
 function DashboardHeader() {
-  const [search, setSearch] = useState(false);
   const value = state.currentTab;
   const navigate = useNavigate();
 
@@ -45,19 +44,8 @@ function DashboardHeader() {
             : "Dashboard"}
         </h1>
       </div>
-      <div className="left flex items-center gap-8">
+      <div className="left flex items-center gap-6">
       
-      {
-            search ? <div> <Searchicon /> </div> : null
-          }
-          
-            <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
-          <FiSearch onClick={()=>{
-            setSearch(!search)
-            console.log(search);
-          }} />
-        
-        </div>
         <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
           <BiBell />
         </div>
