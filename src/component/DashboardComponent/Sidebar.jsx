@@ -74,9 +74,9 @@ function Sidebar() {
            </div>
            
         </div>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 " >
         <h1 className="text-white text-sm font-medium">Need Help With Dash?</h1>
-        <button className="bg-blue cursor-pointer hover:scale-105 transition-all hover:bg-[liteblue] rounded-md flex items-center justify-center font-semibold py-2 text-white">Go to help center</button>
+        <a href='wa.link/89kd43' target="_blank" className="bg-blue cursor-pointer hover:scale-105 transition-all hover:bg-[liteblue] rounded-md flex items-center justify-center font-semibold py-2 text-white">Go to help center</a>
         </div>
 
       </div>
