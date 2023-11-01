@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
 import axiosInstance from "../../../Axios";
+import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
 function Message({ view, handleClose,...item }) {
@@ -22,10 +23,21 @@ function Message({ view, handleClose,...item }) {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    console.log("Clicked :",formData);
     axiosInstance.post(`/message/send-message/${item._id}`,formData).then((res)=>{
       console.log("Message: ",res.data.message)
-    }).catch(err=>console.log("error: ",err))
+      handleClose(false)
+      console.log(view);  
+      Swal.fire({
+        title: "Message Sent",
+        text: "Your message has been sent successfully.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000, // Close after 2 seconds
+      });
+        
+    }).catch(err=>{console.log("error: ",err)
+
+  })
   }
 
   // console.log(formData);

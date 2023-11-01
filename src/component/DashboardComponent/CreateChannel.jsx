@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import axiosInstance from '../../../Axios';
 import { useSnapshot } from 'valtio';
 import state from '../../store';
+import { set } from 'lodash';
 
 const CreateChannel = ({value,handleClose}) => {
+  const [domaindata,setDomainData] = useState([])
     const snap = useSnapshot(state)
+    
+    useEffect(()=>{
+       axiosInstance.get(`/domain/${snap.userId}`).then(res=>{
+          setDomainData(res.data.domain)
+          console.log("Response: ",res.data.domain)
+          console.log("Domain Data: ",domaindata)
+       }).catch(err=>{
+          console.log("Error: ",err)
+       })
+    },[])
+
     const [formData, setFormData] = useState({
         name: "",
         domain: "",

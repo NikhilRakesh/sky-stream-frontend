@@ -12,7 +12,7 @@ function OutercomponentDashboard() {
       </div>
         <div className='flex gap-5 py-5 '>
          <Preview />
-         <User />
+         {/* <User /> */}
         </div>
         
     </div>

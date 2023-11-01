@@ -20,7 +20,7 @@ function Meter() {
         .catch((err) => {
           console.log(err);
         });
-    }, 10000);
+    }, 5000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
