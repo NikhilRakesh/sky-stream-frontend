@@ -7,12 +7,40 @@ import state from '../../store'
 import SkelitonList from './SkelitonList'
 import CreateChannel from './CreateChannel'
 import Swal from 'sweetalert2'
+import CreateDomain from './CreateDomain'
 
 function OutercomponentChannel() {
+  const [createdomain,setCreatedomain] = useState(false)
+  const [domain,setDomain] = useState('')
   const [channel,setChannel] = useState([])
   const [loading,setLoading] = useState(true)
   const [createChannel,setCreateChannel] = useState(false)
   const snap = useSnapshot(state)
+
+  const handleChange = (e)=>{
+    setDomain(e.target.value)
+  }
+
+  const handleSubmit = (e)=>{
+    console.log(snap.userId);
+    e.preventDefault()
+    axiosInstance.post(`/domain/${snap.userId}`,{domain}).then((res)=>{
+        console.log(res.data);
+        Swal.fire({
+          title: "Success",
+          text: "Domain Created Successfully",
+          icon: "success",
+        });
+        setCreatedomain(false)
+      }).catch((err)=>{
+        console.log("Error: ",err);
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong",
+          icon: "error",
+        })
+      })
+  }
 
 
   useEffect(()=>{
@@ -41,15 +69,20 @@ function OutercomponentChannel() {
                 <h1>STATUS</h1>
                 <MdOutlineExpandMore className='text-xl'/>
             </div>
-            <div className='min-w-[400px]'>
-
+            <div className='cursor-pointer' >
+                 <button className='bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all' onClick={()=> setCreatedomain(!createdomain)}> Add Domain </button>
             </div>
+          
+          
             <div className='cursor-pointer' onClick={()=>{setCreateChannel(!createChannel)
-            console.log(createChannel)}}>
+            }}>
                <button className='bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all '> Create Channel </button>
             </div>
            {
                createChannel ? <CreateChannel value={createChannel} handleClose={()=>setCreateChannel(false)} /> :null     }
+            {
+              createdomain ? <CreateDomain value={createdomain} handleClose={()=>setCreatedomain(false)} handleChange={handleChange} handleSubmit={handleSubmit} />  : null
+            }   
         </div>
       <div>
       {
