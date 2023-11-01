@@ -7,6 +7,7 @@ import SkelitonList from './SkelitonList'
 import CreateChannel from './CreateChannel'
 import Swal from 'sweetalert2'
 import CreateDomain from './CreateDomain'
+import DomainValidation from './DomainValidation'
 
 function OutercomponentChannel() {
   const [createdomain,setCreatedomain] = useState(false)
@@ -14,6 +15,7 @@ function OutercomponentChannel() {
   const [channel,setChannel] = useState([])
   const [loading,setLoading] = useState(true)
   const [createChannel,setCreateChannel] = useState(false)
+  const [domainerror,setDomainerror] = useState({})
   const snap = useSnapshot(state)
 
   const handleChange = (e)=>{
@@ -21,10 +23,14 @@ function OutercomponentChannel() {
   }
 
   const handleSubmit = (e)=>{
-    console.log(snap.userId);
     e.preventDefault()
-    axiosInstance.post(`/domain/${snap.userId}`,{domain}).then((res)=>{
-        console.log(res.data);
+    let error = DomainValidation(domain)
+    setDomainerror(error)
+    console.log("Error: ", error)
+
+    if(Object.keys(error).length == 0)
+    {
+      axiosInstance.post(`/domain/${snap.userId}`,{domain}).then((res)=>{
         Swal.fire({
           title: "Success",
           text: "Domain Created Successfully",
@@ -33,12 +39,14 @@ function OutercomponentChannel() {
         setCreatedomain(false)
       }).catch((err)=>{
         console.log("Error: ",err);
-        Swal.fire({
-          title: "Error",
-          text: "Something went wrong",
-          icon: "error",
-        })
+                
       })
+    }
+    else
+    {
+      console.log("Validation Error: ",domainerror);
+    }
+   
   }
 
 
@@ -80,7 +88,7 @@ function OutercomponentChannel() {
            {
                createChannel ? <CreateChannel value={createChannel} handleClose={()=>setCreateChannel(false)} /> :null     }
             {
-              createdomain ? <CreateDomain value={createdomain} handleClose={()=>setCreatedomain(false)} handleChange={handleChange} handleSubmit={handleSubmit} />  : null
+              createdomain ? <CreateDomain value={createdomain} handleClose={()=>setCreatedomain(false)} handleChange={handleChange} handleSubmit={handleSubmit} {...domainerror} />  : null
             }   
         </div>
       <div>

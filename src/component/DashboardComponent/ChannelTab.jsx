@@ -1,6 +1,6 @@
-import  { useState } from 'react'
-import { RiMore2Fill } from 'react-icons/ri'
-import StreamLink from './StreamLink'
+import  { useState } from 'react';
+import { RiMore2Fill } from 'react-icons/ri';
+import StreamLink from './StreamLink';
 import Swal from "sweetalert2";
 import { MdDelete } from 'react-icons/md';
 import axiosInstance from '../../../Axios';

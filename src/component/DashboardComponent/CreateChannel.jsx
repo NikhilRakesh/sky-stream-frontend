@@ -4,9 +4,12 @@ import axiosInstance from '../../../Axios';
 import { useSnapshot } from 'valtio';
 import state from '../../store';
 import { set } from 'lodash';
+import ChannelValidation from './ChannelValidation';
 
 const CreateChannel = ({value,handleClose}) => {
   const [domaindata,setDomainData] = useState([])
+  const [channelerror,setChannelerror] = useState({})
+
     const snap = useSnapshot(state)
     
     useEffect(()=>{
@@ -34,14 +37,22 @@ const CreateChannel = ({value,handleClose}) => {
     }
     const handleSubmit =(e)=>{
         e.preventDefault()
-        axiosInstance.post(`/channel/${state.userData._id}`,formData).then((res)=>{
+        let error = ChannelValidation(formData)
+        setChannelerror(error)
+        if(Object.keys(error).length == 0){
+          axiosInstance.post(`/channel/${state.userData._id}`,formData).then((res)=>{
       
-         state.refreshData = !snap.refreshData
-            handleClose(false);
-        
-        }).catch((err)=>{console.log("Erorr :",err)
-        
-      })
+            state.refreshData = !snap.refreshData
+               handleClose(false);
+           
+           }).catch((err)=>{console.log("Erorr :",err)
+           
+         })
+        }
+        else{
+          console.log("Validation Error: ",channelerror);
+        }
+
     }
 
   return (
@@ -82,6 +93,7 @@ const CreateChannel = ({value,handleClose}) => {
               <div className="flex flex-col gap-3 ">
                 <label htmlFor="domain" className="text-sm">
                   Domain
+            {channelerror.name && <p className='text-red text-sm px-1'>{channelerror.name}</p>}
                 </label>
                 <select
                   onChange={handleChange}
@@ -97,7 +109,8 @@ const CreateChannel = ({value,handleClose}) => {
                     </option>
                   ))}
                 </select>
-              </div>
+                      {channelerror.domain && <p className='text-red text-sm px-1'>{channelerror.domain}</p>}
+        </div>
               <div className="flex flex-col gap-3 ">
                 <label htmlFor="streamKey" className="text-sm">
                   Stream Key
@@ -107,7 +120,8 @@ const CreateChannel = ({value,handleClose}) => {
                   type="text"
                   className="outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 "
                 />
-              </div>
+                  {channelerror.streamKey && <p className='text-red text-sm px-1'>{channelerror.streamKey}</p>}
+        </div>
             </div>
             <div className="pt-8 flex justify-end">
               <button
