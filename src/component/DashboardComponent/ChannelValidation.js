@@ -7,6 +7,7 @@
     
     if(values.name === ""){
         errors.name = "Name is required";
+    }
     
 
     if(values.domain === ""){
@@ -17,6 +18,6 @@
     }
     return errors;
   }
-}
+
 
   

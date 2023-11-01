@@ -1,59 +1,67 @@
-import React, { useEffect, useState } from 'react'
-import { IoCloseCircleOutline } from 'react-icons/io5';
-import axiosInstance from '../../../Axios';
-import { useSnapshot } from 'valtio';
-import state from '../../store';
-import { set } from 'lodash';
-import ChannelValidation from './ChannelValidation';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import axiosInstance from "../../../Axios";
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
-const CreateChannel = ({value,handleClose}) => {
-  const [domaindata,setDomainData] = useState([])
-  const [channelerror,setChannelerror] = useState({})
+import ChannelValidation from "./ChannelValidation";
+import Swal from "sweetalert2";
 
-    const snap = useSnapshot(state)
-    
-    useEffect(()=>{
-       axiosInstance.get(`/domain/${snap.userId}`).then(res=>{
-          setDomainData(res.data.domain)
-          console.log("Response: ",res.data.domain)
-         
-       }).catch(err=>{
-          console.log("Error: ",err)
-       })
-    },[])
+const CreateChannel = ({ value, handleClose }) => {
+  const [domaindata, setDomainData] = useState([]);
+  const [channelerror, setChannelerror] = useState({});
 
-    const [formData, setFormData] = useState({
-        name: "",
-        domain: "",
-        streamKey: "",
-    })
+  const snap = useSnapshot(state);
 
-   
-    const handleChange =(e)=>{
-        const {id,value} = e.target
-        console.log("Id: ",id)
-        console.log("Value: ",value)
-        setFormData({...formData,[id]:value})
-    }
-    const handleSubmit =(e)=>{
-        e.preventDefault()
-        let error = ChannelValidation(formData)
-        setChannelerror(error)
-        if(Object.keys(error).length == 0){
-          axiosInstance.post(`/channel/${state.userData._id}`,formData).then((res)=>{
-      
-            state.refreshData = !snap.refreshData
-               handleClose(false);
-           
-           }).catch((err)=>{console.log("Erorr :",err)
-           
-         })
-        }
-        else{
-          console.log("Validation Error: ",channelerror);
-        }
+  useEffect(() => {
+    axiosInstance
+      .get(`/domain/${snap.userId}`)
+      .then((res) => {
+        setDomainData(res.data.domain);
+        console.log("Response: ", res.data.domain);
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+      });
+  }, []);
 
-    }
+  const [formData, setFormData] = useState({
+    name: "",
+    domain: "",
+    streamKey: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    console.log("Id: ", id);
+    console.log("Value: ", value);
+    setFormData({ ...formData, [id]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let error = ChannelValidation(formData);
+    setChannelerror(error);
+    if (Object.keys(error).length == 0) {
+      axiosInstance
+        .post(`/channel/${state.userData._id}`, formData)
+        .then((res) => {
+          Swal.fire("Created!", "Your Channel has been Created.", "success");
+          state.refreshData = !snap.refreshData;
+          handleClose(false);
+        })
+        .catch((err) => {
+          console.log("Erorr :", err);
+          if (err.response.status === 401) {
+            Swal.fire(
+              "Not Authorized",
+              "You are not authorized to Create Channel.",
+              "error"
+            );
+          }
+        });
+    } 
+  };
 
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">
@@ -87,13 +95,16 @@ const CreateChannel = ({value,handleClose}) => {
                 <input
                   id="name"
                   type="text"
+                  name="name"
                   className="outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 "
                 />
+                {channelerror.name && (
+                  <p className="text-red text-sm px-1">{channelerror.name}</p>
+                )}
               </div>
               <div className="flex flex-col gap-3 ">
                 <label htmlFor="domain" className="text-sm">
                   Domain
-            {channelerror.name && <p className='text-red text-sm px-1'>{channelerror.name}</p>}
                 </label>
                 <select
                   onChange={handleChange}
@@ -102,15 +113,17 @@ const CreateChannel = ({value,handleClose}) => {
                   id="domain"
                   className=" rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
                 >
-                  <option value=''>Select Domain</option>
+                  <option value="">Select Domain</option>
                   {domaindata?.map((item, index) => (
                     <option key={index} value={item.domain}>
                       {item.domain}
                     </option>
                   ))}
                 </select>
-                      {channelerror.domain && <p className='text-red text-sm px-1'>{channelerror.domain}</p>}
-        </div>
+                {channelerror.domain && (
+                  <p className="text-red text-sm px-1">{channelerror.domain}</p>
+                )}
+              </div>
               <div className="flex flex-col gap-3 ">
                 <label htmlFor="streamKey" className="text-sm">
                   Stream Key
@@ -120,8 +133,12 @@ const CreateChannel = ({value,handleClose}) => {
                   type="text"
                   className="outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 "
                 />
-                  {channelerror.streamKey && <p className='text-red text-sm px-1'>{channelerror.streamKey}</p>}
-        </div>
+                {channelerror.streamKey && (
+                  <p className="text-red text-sm px-1">
+                    {channelerror.streamKey}
+                  </p>
+                )}
+              </div>
             </div>
             <div className="pt-8 flex justify-end">
               <button
@@ -136,6 +153,6 @@ const CreateChannel = ({value,handleClose}) => {
       </div>
     </div>
   );
-}
+};
 
-export default CreateChannel
+export default CreateChannel;
