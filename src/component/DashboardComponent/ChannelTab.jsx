@@ -20,10 +20,12 @@ function ChannelTab({ ...item }) {
        cancelButtonText: "Cancel",
      }).then((result) => {
        if (result.isConfirmed) {
-         axiosInstance.get(`/channel/delete/${item._id}`).then((res) => {
-            console.log(res.data);
-            state.refreshData = !snap.refreshData;
-         })
+         axiosInstance
+           .get(`/channel/delete/${item._id}`, { withCredentials: true })
+           .then((res) => {
+             console.log(res.data);
+             state.refreshData = !snap.refreshData;
+           });
          Swal.fire("Deleted!", "Your item has been deleted.", "success");
        } else if (result.dismiss === Swal.DismissReason.cancel) {
          Swal.fire("Cancelled", "Your item is safe :)", "info");

@@ -25,23 +25,28 @@ function OutercomponentInbox() {
   const handleDelete = (e)=>{
       const Ids = {selectedIds}
     e.preventDefault()
-    axiosInstance.get(`/message/delete-message/${Ids}/${snap.userId}`).then((res)=>{
-      console.log("Response: ",res.data.message);
-      state.refreshData = res.data
-    }).catch(err=>console.log("Error: ",err))
+    axiosInstance
+      .get(`/message/delete-message/${Ids}/${snap.userId}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("Response: ", res.data.message);
+        state.refreshData = res.data;
+      })
+      .catch((err) => console.log("Error: ", err));
   }
   
 
   useEffect(() => {
    setTimeout(()=>{
      axiosInstance
-       .get("message/contact")
+       .get("message/contact", { withCredentials: true })
        .then((res) => {
          setInbox(res.data.data);
          setIsLoading(false);
        })
        .catch((err) => console.log(err));
-   },900 )
+   },500 )
   },[snap.refreshData])
 
   return (

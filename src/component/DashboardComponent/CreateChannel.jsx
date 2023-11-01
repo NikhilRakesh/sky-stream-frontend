@@ -28,6 +28,8 @@ const CreateChannel = ({value,handleClose}) => {
    
     const handleChange =(e)=>{
         const {id,value} = e.target
+        console.log("Id: ",id)
+        console.log("Value: ",value)
         setFormData({...formData,[id]:value})
     }
     const handleSubmit =(e)=>{

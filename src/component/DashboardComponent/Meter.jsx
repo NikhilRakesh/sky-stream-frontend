@@ -12,16 +12,15 @@ function Meter() {
   useEffect(() => {
     setInterval(() => {
       axiosInstance
-        .get("/stats/system")
+        .get("/stats/system", { withCredentials: true })
         .then((res) => {
           setStats(res.data.data);
-          setLoading(false)
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
         });
     }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

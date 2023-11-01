@@ -43,11 +43,13 @@ function OutercomponentUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosInstance
-      .post(`/users/${snap.userId}/create-user/`, formData)
+      .post(`/users/${snap.userId}/create-user/`, formData, {
+        withCredentials: true,
+      })
       .then((res) => {
         state.refreshData = !snap.refreshData;
-        setResponse(true)
-        setCreateuser(false)
+        setResponse(true);
+        setCreateuser(false);
       })
       .catch((err) => console.log("error :", err));
   };
@@ -55,12 +57,12 @@ function OutercomponentUser() {
 
   useEffect(() => {
     axiosInstance
-      .get(`/users/${snap.userId}`)
-      .then((res) =>{
-         setData(res.data)
+      .get(`/users/${snap.userId}`, { withCredentials: true })
+      .then((res) => {
+        setData(res.data);
       })
       .then((res) => {
-        setLoading(false)  
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
