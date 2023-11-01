@@ -4,6 +4,7 @@ import { Switch } from "@chakra-ui/react";
 import { HiOutlineMail } from "react-icons/hi";
 import state from "../../store";
 import { useSnapshot } from "valtio";
+import axiosInstance from "../../../Axios";
 
 // ! handlePermission has to be done
 
@@ -11,6 +12,13 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
   
   const snap = useSnapshot(state);
   
+  const handeleDelete =()=>{
+
+    axiosInstance.get(`/message//delete-message/${snap.userId}/${item._id}`).then((res)=>{
+      console.log(res.data)
+      state.refreshData = !snap.refreshData
+    }).catch((err)=>console.log(err))
+  }
 
   return (
     <div>
@@ -88,6 +96,16 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
           >
             <HiOutlineMail />
           </div>
+        </div>
+        <div>
+          {item.message.data && (
+            <button
+              onClick={() => handeleDelete()}
+              className="px-2 py-2 bg-red rounded-lg text-white"
+            >
+              Delete Message
+            </button>
+          )}
         </div>
       </div>
     </div>

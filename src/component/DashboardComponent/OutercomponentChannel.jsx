@@ -85,7 +85,7 @@ function OutercomponentChannel() {
           <div className="cursor-pointer">
             <button
               className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all"
-              onClick={() => setCreatedomain(!createdomain)}
+              onClick={() =>  setCreatedomain(!createdomain)  }
             >
              
               Add Domain
@@ -96,7 +96,13 @@ function OutercomponentChannel() {
         <div
           className="cursor-pointer"
           onClick={() => {
-            setCreateChannel(!createChannel);
+            snap.userData.createChannel
+              ? setCreateChannel(!createChannel)
+              : Swal.fire(
+                  "Not Authorized",
+                  "You are not authorized to Create Channel.",
+                  "error"
+                );
           }}
         >
           <button className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all ">

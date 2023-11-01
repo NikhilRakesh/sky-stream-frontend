@@ -50,7 +50,6 @@ function Message({ view, handleClose,...item }) {
     
   }
 
-  // console.log(formData);
 
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">

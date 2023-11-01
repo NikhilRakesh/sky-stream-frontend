@@ -7,6 +7,7 @@ export default function MessageValidation(values){
     
     if(values.subject === ""){
         errors.subject = "Subject is required";
+    }
     
 
     if(values.message === ""){
@@ -17,5 +18,5 @@ export default function MessageValidation(values){
     }
    
     return errors;
-  }
+  
 }

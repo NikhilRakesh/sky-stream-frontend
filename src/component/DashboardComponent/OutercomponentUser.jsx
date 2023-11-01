@@ -8,6 +8,7 @@ import CreateUser from "./CreateUser";
 import { useSnapshot } from "valtio";
 import state from "../../store";
 import CreateUserValidation from "./CreateUserValidation";
+import Swal from "sweetalert2";
 
 function OutercomponentUser() {
   const snap = useSnapshot(state);
@@ -54,8 +55,23 @@ function OutercomponentUser() {
         state.refreshData = !snap.refreshData;
         setResponse(true);
         setCreateuser(false);
+         Swal.fire("Created!", "Your Channel has been Created.", "success");
       })
-      .catch((err) => console.log("error :", err));
+      .catch((err) =>{
+         if (err.response.status === 401) {
+           Swal.fire(
+             "Not Authorized",
+             "You are not authorized to Create User.",
+             "error"
+           );
+         }
+          if (err.response.status === 409) {
+            Swal.fire(
+              "User Already Exist",
+              "error"
+            );
+          }
+          console.log("error :", err)});
 
     }
     else
@@ -76,7 +92,6 @@ function OutercomponentUser() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   }, [snap.refreshData]);
@@ -107,7 +122,13 @@ function OutercomponentUser() {
         <div
           className=" cursor-pointer hover:scale-105 transform ease-in-out w-fit h-fit bg-blue px-2 py-1 rounded-lg text-white"
           onClick={() => {
-            setCreateuser(!createuser);
+            snap.userData.createChannel
+              ? setCreateuser(!createuser)
+              : Swal.fire(
+                  "Not Authorized",
+                  "You are not authorized to Create User.",
+                  "error"
+                );
           }}
         >
           Create User
