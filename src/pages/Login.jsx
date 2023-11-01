@@ -28,7 +28,7 @@ function Login() {
     if(!user.email || !user.password){
      return alert("Please fill all the fields")
     }
-    axiosInstance.post('/users/verify-login/',user).then((res)=>{
+    axiosInstance.post('/users/verify-login/',user,{withCredentials:true}).then((res)=>{
       if(res.data.message === "Login successful"){
         const userData = res.data.data
         localStorage.setItem('user',JSON.stringify(userData))
