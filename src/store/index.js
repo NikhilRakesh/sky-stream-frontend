@@ -7,6 +7,7 @@ const state = proxy({
   refreshData: false,
   userData: JSON.parse(localStorage.getItem('user')) || null,
   userId: localStorage.getItem("user_id") || null,
+  changePassword:true
 });
 
 export default state;

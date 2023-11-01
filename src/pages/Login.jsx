@@ -9,7 +9,6 @@ import state from "../store";
 
 
 function Login() {
-  
 
   const [user,setUser]= useState({
     email:"",
@@ -31,9 +30,10 @@ function Login() {
     axiosInstance.post('/users/verify-login/',user,{withCredentials:true}).then((res)=>{
       if(res.data.message === "Login successful"){
         const userData = res.data.data
+        state.userId = res.data.data._id
+        state.userData = res.data.data
         localStorage.setItem('user',JSON.stringify(userData))
         localStorage.setItem('user_id',res.data.data._id)
-        state.userData = res.data.data
        navigate('/dashboard')
       }
       else 
@@ -75,9 +75,9 @@ function Login() {
 </div >
 <div onClick={(e)=>{
   e.preventDefault()
-  navigate('/forgott')
+  navigate("/forgot-password");
 }} className="text-slate-400 cursor-pointer text-sm flex justify-end hover:underline hover:text-white ">
-   <h1>Forgotten Password?</h1>
+   <h1>Forget Password?</h1>
 </div>
        </div>
        <button onClick={handleSubmit} className="hover:cursor-pointer w-[22.5rem] flex items-center justify-center h-fit py-2 bg-violet rounded-md hover:scale-105 transition-all ease-in-out text-white text-lg">

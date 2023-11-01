@@ -7,10 +7,12 @@ import state from "../../store";
 import Dropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../Axios";
+import { useSnapshot } from "valtio";
 
 function DashboardHeader() {
   const value = state.currentTab;
   const navigate = useNavigate();
+  const snap = useSnapshot(state)
 
   const logout = () => {
     axiosInstance
@@ -45,12 +47,11 @@ function DashboardHeader() {
         </h1>
       </div>
       <div className="left flex items-center gap-6">
-        <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
+        {/* <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
           <BiBell />
-        </div>
+        </div> */}
         <div className="account flex items-center gap-5">
-          <div className="rounded-full h-12 w-12 bg-gray"></div>
-          <div className="font-bold">Visakh</div>
+          <div className="font-bold">{snap.userData.name}</div>
           <div>
             <Dropdown handleLogout={logout} />
           </div>

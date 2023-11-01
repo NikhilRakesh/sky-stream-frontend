@@ -106,7 +106,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                     value={snap.userData.channelLimit}
                   >
                     {Array.from(
-                      { length: snap.userData.channelLimit },
+                      { length: snap.userData.superAdmin? 100 : snap.userData.channelLimit },
                       (_, index) => (
                         <option key={index} value={index + 1}>
                           {index + 1}

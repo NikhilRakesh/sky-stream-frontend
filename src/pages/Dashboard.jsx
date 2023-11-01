@@ -2,14 +2,13 @@ import Sidebar from '../component/DashboardComponent/Sidebar'
 import Right from '../component/DashboardComponent/Right'
 import { useEffect } from 'react'
 import axiosInstance from '../../Axios'
-
 function Dashboard() {
 
   useEffect(() => {
     axiosInstance
       .post("/auth/refresh-token", {}, { withCredentials: true })
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }, []);
 
   return (

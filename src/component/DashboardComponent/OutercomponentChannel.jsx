@@ -1,5 +1,4 @@
 import  { useEffect, useState } from 'react'
-import { MdOutlineExpandMore } from 'react-icons/md'
 import ChannelTab from './ChannelTab'
 import axiosInstance from '../../../Axios'
 import { useSnapshot } from 'valtio'
@@ -63,11 +62,11 @@ function OutercomponentChannel() {
         <div className='Heading  w-full flex justify-between bg-light  px-16 py-8 text-blue items-center font-semibold border-[1px]'>
             <div className='flex gap-2 min-w-[180px] items-center'> 
                 <h1>CHANNEL NAME</h1>
-                <MdOutlineExpandMore className='text-xl'/>
+        
             </div>
             <div className='flex gap-2 items-center '> 
                 <h1>STATUS</h1>
-                <MdOutlineExpandMore className='text-xl'/>
+        
             </div>
             <div className='cursor-pointer' >
                  <button className='bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all' onClick={()=> setCreatedomain(!createdomain)}> Add Domain </button>

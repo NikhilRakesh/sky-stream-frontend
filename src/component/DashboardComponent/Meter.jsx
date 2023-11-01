@@ -3,11 +3,14 @@ import CircleChart from "./CircleChart";
 import Gauage from "./Gauage";
 import axiosInstance from "../../../Axios";
 import { Skeleton } from "@chakra-ui/react";
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
 function Meter() {
   // eslint-disable-next-line no-unused-vars
   const [stats, setStats] = useState({});
   const [loading, setLoading] = useState(true);
+  const snap = useSnapshot(state)
 
   useEffect(() => {
     setInterval(() => {
@@ -34,18 +37,22 @@ function Meter() {
           </>
         ) : (
           <>
-            <div className="flex items-center flex-col gap-3">
-              <Gauage percent={stats.cpuLoad} />
-              <h6 className="mt-7 text-sm font-thin">CPU Load</h6>
-            </div>
-            <div className="flex items-center flex-col gap-3">
-              <Gauage percent={stats.cpuLoad + 18} />
-              <h6 className="mt-7 text-sm">Disk Read</h6>
-            </div>
-            <div className="flex items-center flex-col gap-3">
-              <Gauage percent={stats.cpuLoad - 14} />
-              <h6 className="mt-7 text-sm">Disk Write</h6>
-            </div>
+            {snap.userData.superAdmin && (
+              <>
+                <div className="flex items-center flex-col gap-3">
+                  <Gauage percent={stats.cpuLoad} />
+                  <h6 className="mt-7 text-sm font-thin">CPU Load</h6>
+                </div>
+                <div className="flex items-center flex-col gap-3">
+                  <Gauage percent={stats.cpuLoad + 18} />
+                  <h6 className="mt-7 text-sm">Disk Read</h6>
+                </div>
+                <div className="flex items-center flex-col gap-3">
+                  <Gauage percent={stats.cpuLoad - 14} />
+                  <h6 className="mt-7 text-sm">Disk Write</h6>
+                </div>
+              </>
+            )}
           </>
         )}
       </div>

@@ -1,4 +1,3 @@
-import { MdOutlineExpandMore } from 'react-icons/md'
 import LiveTabs from './LiveTabs'
 import { useEffect, useState } from 'react'
 import axiosInstance from '../../../Axios'
@@ -21,7 +20,6 @@ function OutercomponentLive() {
         if (res.data.data.length === 0) {
           return setLive([]);
         }
-        console.log(res.data.data)
         setLive(res.data.data);
 
       })
@@ -35,11 +33,11 @@ function OutercomponentLive() {
           <div className="header flex justify-between  font-bold border-b-2 pb-10">
             <div className="name text-blue flex  items-center gap-2">
               NAME
-              <MdOutlineExpandMore />
+          
             </div>
             <div className="name text-blue flex items-center gap-2">
-              DURATION
-              <MdOutlineExpandMore />
+              Start Time
+           
             </div>
             <div></div>
             <div></div>

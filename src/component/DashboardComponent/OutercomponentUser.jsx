@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
-import { MdOutlineExpandMore } from "react-icons/md";
+import { useEffect, useState } from "react";
 import UserTab from "./UserTab";
 import axiosInstance from "../../../Axios";
 import SkelitonList from "./SkelitonList";
@@ -15,7 +15,6 @@ function OutercomponentUser() {
   const [createuser, setCreateuser] = useState(false);
   const [resopnes, setResponse] = useState([]);
 
-  
 
   const [formData, setFormData] = useState({
     name: "",
@@ -78,20 +77,20 @@ function OutercomponentUser() {
       >
         <div className="name flex items-center ">
           NAME
-          <MdOutlineExpandMore />
+        
         </div>
         <div className="status flex items-center  ">
           STATUS
-          <MdOutlineExpandMore />
+        
         </div>
         <div className="expiryDate flex items-center ">
           CREATED DATE
-          <MdOutlineExpandMore />
+        
         </div>
 
         <div className="expiryDate flex items-center ">
           EXPIRY DATE
-          <MdOutlineExpandMore />
+        
         </div>
         <div
           className=" cursor-pointer hover:scale-105 transform ease-in-out w-fit h-fit bg-blue px-2 py-1 rounded-lg text-white"

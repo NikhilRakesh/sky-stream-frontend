@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { AiTwotoneMinusCircle } from "react-icons/ai";
 import { MdOutlineExpandMore } from "react-icons/md";
 import dateFormat from "dateformat";
@@ -18,35 +19,36 @@ function UserTab({ ...item }) {
 
   const snap = useSnapshot(state);
 
-  const [value, setValue] = useState({
+  const [permissions, setPermissions] = useState({
     addUser: item.addUser,
     deleteUser: item.deleteUser,
     createChannel: item.createChannel,
     deleteChannel: item.deleteChannel,
     channelLimit: item.channelLimit,
-    id: item._id,
   });
 
   const handlePermission = () => {
     axiosInstance
-      .post(`users/user-permission/${item._id}`, value)
-      .then((res) => console.log(res.data))
-      .then(() => {
+      .post(`users/user-permission/${item._id}`, permissions) // Assuming the backend endpoint is 'updateUserPermission'
+      .then((res) => {
+        console.log(res.data);
         state.refreshData = !snap.refreshData;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    console.log(name, value, type, checked)
     const newValue = type === "checkbox" ? checked : value;
-    setValue({ ...value, [name]: newValue });
-    console.log(value);
+    setPermissions({ ...permissions, [name]: newValue });
   };
 
-  // useEffect(() => {
-  //   handlePermission();
-  // }, [value]);
+  useEffect(() => {
+    handlePermission();
+  }, [permissions]);
 
   const handleDelete = () => {
     Swal.fire({
@@ -94,9 +96,7 @@ function UserTab({ ...item }) {
           <div
             className="hover:text-red text-2xl absolute right-5 top-5  cursor-pointer"
             onClick={() => {
-             
-             setUserDetailsMenu(false);
-             
+              setUserDetailsMenu(false);
             }}
           >
             <IoCloseCircleOutline />
@@ -183,7 +183,7 @@ function UserTab({ ...item }) {
             handlePermission={handlePermission}
             view={view}
             show={show}
-            value={value}
+            value={permissions}
             {...item}
           />
         </div>

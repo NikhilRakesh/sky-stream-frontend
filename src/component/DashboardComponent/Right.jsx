@@ -6,6 +6,7 @@ import OutercomponentLive from './OutercomponentLive'
 import { Route, Routes } from 'react-router-dom'
 import OutercomponentChannel from './OutercomponentChannel'
 import OutercomponentDomain from './OutercomponentDomain'
+import PageNotFound from '../../pages/404'
 
 function Right() {
   return (
@@ -18,7 +19,7 @@ function Right() {
       <Route path='/live' element={<OutercomponentLive />} />
       <Route path='/channel' element={<OutercomponentChannel />}/>
       <Route path='/domain' element={<OutercomponentDomain />}/>
-      <Route path='*' element={<div>404 not function</div>}/>
+      <Route path='*' element={<PageNotFound/>}/>
     </Routes>
       </div>
    
