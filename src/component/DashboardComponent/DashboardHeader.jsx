@@ -45,15 +45,15 @@ function DashboardHeader() {
         </h1>
       </div>
       <div className="left flex items-center gap-6">
-      
         <div className="text-xl bg-gry rounded-full w-9 h-9 justify-center items-center flex">
           <BiBell />
         </div>
         <div className="account flex items-center gap-5">
           <div className="rounded-full h-12 w-12 bg-gray"></div>
           <div className="font-bold">Visakh</div>
-          <div ><Dropdown /></div>
-          
+          <div>
+            <Dropdown handleLogout={logout} />
+          </div>
         </div>
       </div>
     </div>

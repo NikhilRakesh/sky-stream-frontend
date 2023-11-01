@@ -1,8 +1,7 @@
-import React from 'react'
 import { PiSignOutBold } from 'react-icons/pi'
 import "./Dropdown.css"
 
-const Dropdown = ({ handleLogout }) => {
+const   Dropdown = ({ handleLogout }) => {
   return (
     <label className="popup z-50">
       <input type="checkbox" />
