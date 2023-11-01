@@ -5,7 +5,7 @@ import axiosInstance from "../../../Axios";
 import state from "../../store";
 import { useSnapshot } from "valtio";
 
-function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
+function CreateUser({ value, handleClose, handleChange, handleSubmit,...error }) {
   const [domain, setDomain] = useState([]);
   const snap = useSnapshot(state);
 
@@ -16,12 +16,10 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(snap.userData.channelLimit)
-
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">
       <div
-        className={`w-[45rem] pb-3 h-[30rem] rounded-3xl  border-2 border-gray bg-slate-100  ${
+        className={`w-[45rem] pb-3  rounded-3xl  border-2 border-gray bg-slate-100 h-fit ${
           value ? "z-10" : "-z-10"
         }`}
       >
@@ -30,7 +28,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
             className="hover:text-red text-3xl"
             onClick={() => {
               handleClose(false);
-              console.log("button");
+              
             }}
           >
             <IoCloseCircleOutline className="cursor-pointer" />
@@ -48,6 +46,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                   name="name"
                   className="rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
                 />
+                {error.name && <p className='text-red text-sm px-1'>{error.name}</p>}
               </div>
               <div className=" gap-1 flex flex-col ">
                 <label>Email</label>
@@ -57,6 +56,8 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                   name="email"
                   className="rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
                 />
+                {error.email && <p className='text-red text-sm px-1'>{error.email}</p>}
+
               </div>
               <div className=" gap-1 flex flex-col ">
                 <label>Password</label>
@@ -66,6 +67,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                   name="password"
                   className="rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
                 />
+                 {error.password && <p className='text-red text-sm px-1'>{error.password}</p>}
               </div>
             </div>
 
@@ -85,6 +87,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                     </option>
                   ))}
                 </select>
+                {error.domain && <p className='text-red text-sm px-1'>{error.domain}</p>}
               </div>
               <div className="flex gap-7">
                 <div className=" gap-1 flex flex-col ">
@@ -114,6 +117,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                       )
                     )}
                   </select>
+                  {error.limit && <p className='text-red text-sm px-1'>{error.limit}</p>}
                 </div>
                 <div className=" gap-1 flex flex-col ">
                   <label>Expiry Date</label>
@@ -123,6 +127,7 @@ function CreateUser({ value, handleClose, handleChange, handleSubmit }) {
                     name="expiryDate"
                     className="cursor-pointer rounded-md outline px-2 flex items-center outline-gray outline-1 h-8 w-36"
                   />
+                   {error.expiryDate && <p className='text-red text-sm px-1'>{error.expiryDate}</p>}
                 </div>
               </div>
             </div>

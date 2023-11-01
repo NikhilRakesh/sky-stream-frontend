@@ -5,13 +5,15 @@ import axiosInstance from "../../../Axios";
 import state from "../../store";
 import { useSnapshot } from "valtio";
 import { confirmAlert } from "react-confirm-alert";
+import PushValidation from "./PushValidation";
 
 // eslint-disable-next-line react/prop-types
 function StreamLink({ handleClose, view, ...item }) {
   const [copiedStates, setCopiedStates] = useState(Array(5).fill(false));
   const [copied, setCopied] = useState(100);
+  const [error, setError] = useState({});
   const [edge, setEdge] = useState({
-    edge: "",
+    edge: "", 
   });
   const [edgeData, setEdgeData] = useState([]);
 
@@ -45,10 +47,19 @@ function StreamLink({ handleClose, view, ...item }) {
   };
 
   const handlePush = async () => {
-    axiosInstance.post(`push/${snap.userId}/${item._id}`, edge).then((res) => {
-      console.log(res.data);
-      state.refreshData = !snap.refreshData;
-    });
+    let error = PushValidation(edge)
+    setError(error)
+    if (Object.keys(error).length == 0) {
+      axiosInstance.post(`push/${snap.userId}/${item._id}`, edge).then((res) => {
+        console.log(res.data);
+        state.refreshData = !snap.refreshData;
+      });
+    }
+    else
+    {
+      console.log("Validation Error: ",error);
+    }
+   
   };
 
   const handleChenge = (e) => {
@@ -148,7 +159,9 @@ function StreamLink({ handleClose, view, ...item }) {
             </div>
             <small className="text-[10px]">
               please add the edge link + stream key
+              {error.edge && <p className="text-red">Please add edge link</p>}
             </small>
+            
             {edgeData?.map((item, index) => (
               <>
                 <div className="flex justify-between" key={index}>

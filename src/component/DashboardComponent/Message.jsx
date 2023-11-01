@@ -4,9 +4,11 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { VscSend } from "react-icons/vsc";
 import axiosInstance from "../../../Axios";
 import Swal from "sweetalert2";
+import MessageValidation from "./MessageValidation";
 
 // eslint-disable-next-line react/prop-types
 function Message({ view, handleClose,...item }) {
+  const [error,setError] = useState({})
   const [formData, setFormData] = useState({
     to:item._id,
       subject:"",
@@ -23,21 +25,29 @@ function Message({ view, handleClose,...item }) {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    axiosInstance.post(`/message/send-message/${item._id}`,formData).then((res)=>{
-      console.log("Message: ",res.data.message)
-      handleClose(false)
-      console.log(view);  
-      Swal.fire({
-        title: "Message Sent",
-        text: "Your message has been sent successfully.",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 2000, // Close after 2 seconds
-      });
-        
-    }).catch(err=>{console.log("error: ",err)
-
-  })
+    let error = MessageValidation(formData)
+    setError(error)
+    if(Object.keys(error).length == 0){
+      axiosInstance.post(`/message/send-message/${item._id}`,formData).then((res)=>{
+        console.log("Message: ",res.data.message)
+        handleClose(false)
+        console.log(view);  
+        Swal.fire({
+          title: "Message Sent",
+          text: "Your message has been sent successfully.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000, // Close after 2 seconds
+        });
+          
+      }).catch(err=>{console.log("error: ",err)
+  
+    })
+    }
+    else{
+      console.log("Validation Error: ",error);
+    }
+    
   }
 
   // console.log(formData);
@@ -64,23 +74,27 @@ function Message({ view, handleClose,...item }) {
         <form onChange={handleChange} onSubmit={handleSubmit} >
           <div className="body flex px-10 py-5 gap-7 flex-wrap w-full items-center">
          
-            <div className="body px-10 py-4 border-black w-full gap-4 flex flex-wrap border-[1px]">
+            <div className="body px-10 py-4 border-black w-full gap-4 flex flex-wrap h-fit border-[1px]">
               <div className="flex py-4 h-10 items-center w-full  border-gray gap-5">
                 <label htmlFor="subject" className="text-sm">Subject:</label>
                 <input
                   type="text" name="subject" 
                   className="h-10 w-full px-2  bg-transparent border-2 focus:outline-none "
                 />
+                
               </div>
+              {error.subject && <p className='text-red text-sm px-[70px]'>{error.subject}</p>}
               <div className="h-full w-full flex gap-2">
                 <label htmlFor="message" className="text-sm ">Message:</label>
                 <textarea 
                   type="text"
                   name="message"
                   className="px-2 bg-transparent w-full border-2 focus:outline-none h-24"
-                  placeholder=""
+                  placeholder="Type your message here..."
                 ></textarea>
+                
               </div>
+              {error.message && <p className='text-red text-sm px-[70px]'>{error.message}</p>}
             </div>
           </div>
           <div className="flex gap-2 items-center">

@@ -1,7 +1,9 @@
 import React from 'react'
 import { IoCloseCircleOutline } from 'react-icons/io5';
 
-const CreateDomain = ({value,handleClose,handleSubmit,handleChange}) => {
+const CreateDomain = ({value,handleClose,handleSubmit,handleChange,...domainerror}) => {
+  
+
 
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">
@@ -28,6 +30,7 @@ const CreateDomain = ({value,handleClose,handleSubmit,handleChange}) => {
         <div className='flex flex-col gap-3 '>
             <label htmlFor='domain' className='text-sm' >Domain Name</label>
             <input id='domain' type='text' onChange={handleChange} className='outline outline-gray rounded-lg outline-[1px] px-1 py-2 w-36 '/>
+            {domainerror.domain && <p className='text-red text-sm px-1'>{domainerror.domain}</p>}
         </div>
       
       </div>

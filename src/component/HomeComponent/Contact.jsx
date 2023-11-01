@@ -10,8 +10,10 @@ import state from "../../store";
 import { useState } from "react";
 
 import axiosInstance from "../../../Axios";
+import ContactValidation from "./ContactValidation";
 
 function Contact() {
+  const [error,setError] = useState({})
   const [message, setMessage] = useState({
     name: "",
     email: "",
@@ -30,12 +32,19 @@ function Contact() {
     console.log(message);
   };
 
-  const handleSubmit = () => {
-    
-      axiosInstance
-        .post("message/send-contact", message)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+  const handleSubmit = (e) => {
+     e.preventDefault()
+     let error = ContactValidation(message)
+     setError(error)
+     if(Object.keys(error).length == 0){
+      axiosInstance.post("message/send-contact",message).then((res) => 
+      console.log(res)).catch((err) => console.log(err))
+     }
+     else
+     {
+      console.log("Validation Error: ",error);
+     }
+        
   };
 
   return (
@@ -53,6 +62,7 @@ function Contact() {
                 name="name"
                 className="bg-transparent border-b-[1px] focus:outline-none"
               />
+              {error.name && <p className='text-red text-sm px-1'>{error.name}</p>}
             </div>
             <div className="flex flex-col w-full">
               <label className="text-sm  ">EMAIL</label>
@@ -62,6 +72,7 @@ function Contact() {
                 name="email"
                 className="bg-transparent border-b-[1px] focus:outline-none"
               />
+              {error.email && <p className='text-red text-sm px-1'>{error.email}</p>}
             </div>
             <div className="flex flex-col w-full">
               <label className="text-sm  ">PHONE NUMBER</label>
@@ -71,6 +82,7 @@ function Contact() {
                 name="contact"
                 className="bg-transparent border-b-[1px] focus:outline-none"
               />
+              {error.contact && <p className='text-red text-sm px-1'>{error.contact}</p>}
             </div>
             <div className="flex flex-col w-full gap-2">
               <label className="text-sm  ">YOUR MESSAGE</label>
@@ -80,6 +92,7 @@ function Contact() {
                 name="message"
                 className="bg-transparent border-b-[1px] h-32 focus:outline-none "
               />
+              {error.message && <p className='text-red text-sm px-1'>{error.message}</p>}
             </div>
           </div>
           <div className="w-full lg:w-[50%] h-full text-white font-medium flex flex-col justify-center gap-5 lg:pt-16 lg:pr-10">

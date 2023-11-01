@@ -7,6 +7,7 @@ import SkelitonList from "./SkelitonList";
 import CreateUser from "./CreateUser";
 import { useSnapshot } from "valtio";
 import state from "../../store";
+import CreateUserValidation from "./CreateUserValidation";
 
 function OutercomponentUser() {
   const snap = useSnapshot(state);
@@ -14,9 +15,9 @@ function OutercomponentUser() {
   const [loading, setLoading] = useState(true);
   const [createuser, setCreateuser] = useState(false);
   const [resopnes, setResponse] = useState([]);
-
+  const [error, setError] = useState({})
   
-
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,7 +43,11 @@ function OutercomponentUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosInstance
+    let error = CreateUserValidation(formData)
+    setError(error)
+    if(Object.keys(error).length == 0){
+           
+      axiosInstance
       .post(`/users/${snap.userId}/create-user/`, formData)
       .then((res) => {
         state.refreshData = !snap.refreshData;
@@ -50,6 +55,13 @@ function OutercomponentUser() {
         setCreateuser(false)
       })
       .catch((err) => console.log("error :", err));
+
+    }
+    else
+    {
+      console.log("Validation Error: ",error);
+    }
+    
   };
 
 
@@ -102,7 +114,7 @@ function OutercomponentUser() {
       </div>
       <div>
         {createuser ? (
-          <CreateUser
+          <CreateUser {...error}
             value={createuser}
             
             handleChange={handleChange}
