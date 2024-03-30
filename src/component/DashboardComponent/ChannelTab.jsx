@@ -10,6 +10,7 @@ import { useSnapshot } from 'valtio';
 function ChannelTab({ ...item }) {
   const [view, setView] = useState(false);
   const snap = useSnapshot(state);
+  console.log('user-',snap.userData._id);
 
    const handleDelete = () => {
      Swal.fire({
@@ -22,7 +23,7 @@ function ChannelTab({ ...item }) {
      }).then((result) => {
        if (result.isConfirmed) {
          axiosInstance
-           .get(`/channel/delete/${item._id}`, { withCredentials: true })
+           .get(`/channel/delete/${item._id}?userId=${snap?.userData._id}`, { withCredentials: true })
            .then((res) => {
            
              state.refreshData = !snap.refreshData;

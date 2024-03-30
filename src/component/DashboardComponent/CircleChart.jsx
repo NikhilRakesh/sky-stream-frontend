@@ -7,6 +7,7 @@ const CircleChart = ({value}) => {
 
   let newValue = value/10
 
+
   return (
     <div className="w-24">
       <CircularProgressbar maxValue={1024} value={newValue} text={`${newValue}`} />

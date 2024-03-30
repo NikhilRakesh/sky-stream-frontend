@@ -25,14 +25,14 @@ function Preview() {
         const videoElement = document.getElementById("videoElement");
         const flvPlayer = flvjs.createPlayer({
           type: "flv",
-          url: `http://localhost:8000${live[0]?.streamKey}.flv`,
+          url: `http://154.26.136.90:8000${live[0]?.streamKey}.flv`,
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
         flvPlayer.play();
       }
     }, []);
-
+    
   return (
     <div className="bg-white w-[790px] h-72 rounded-xl ">
       <div className="w-full h-16 border-b-[1px] shadow-md flex items-center px-10 gap-3">

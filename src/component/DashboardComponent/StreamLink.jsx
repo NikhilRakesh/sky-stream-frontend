@@ -110,11 +110,11 @@ function StreamLink({ handleClose, view, ...item }) {
         <div className="w-full h-full py-10 px-10 flex flex-col gap-10">
           <div className="flex flex-col gap-4">
             {[
-              `rtmp://skystreaming.com${item.streamKey}`,
-              `http://skystreaming.com${item.streamKey}`,
-              `ws://skystreaming.com${item.streamKey}.flv`,
-              `http://skystreaming.com${item.streamKey}/index.m3u8`,
-              `http://skystreaming.com${item.streamKey}/index.mpd`,
+              `rtmp://skystreamservers.com${item.streamKey}`,
+              `http://skystreamservers.com${item.streamKey}`,
+              `ws://skystreamservers.com${item.streamKey}.flv`,
+              `http://skystreamservers.com${item.streamKey}/index.m3u8`,
+              `http://skystreamservers.com${item.streamKey}/index.mpd`,
             ].map((value, index) => (
               <div key={index} className="relative">
                 <input

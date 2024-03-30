@@ -14,7 +14,7 @@ function Meter() {
 
   useEffect(() => {
     setInterval(() => {
-      axiosInstance
+      axiosInstance    
         .get("/stats/system", { withCredentials: true })
         .then((res) => {
           setStats(res.data.data);

@@ -26,7 +26,6 @@ function UserTab({ ...item }) {
     deleteChannel: item.deleteChannel,
     channelLimit: item.channelLimit,
   });
-
   const handlePermission = () => {
     axiosInstance
       .post(`users/user-permission/${item._id}`, permissions) // Assuming the backend endpoint is 'updateUserPermission'

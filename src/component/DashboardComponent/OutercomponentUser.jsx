@@ -45,7 +45,7 @@ function OutercomponentUser() {
     let error = CreateUserValidation(formData)
     setError(error)
     if(Object.keys(error).length == 0){
-           
+      console.log('insde condition',snap.userId);  
       axiosInstance
       .post(`/users/${snap.userId}/create-user/`, formData, {
         withCredentials: true,
@@ -70,7 +70,7 @@ function OutercomponentUser() {
               "error"
             );
           }
-          console.log("error :", err)});
+          console.log("errorssss :", err)});
 
     }
     else
