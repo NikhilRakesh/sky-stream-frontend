@@ -19,7 +19,7 @@ function PreviewLive({Live,handleClose,streamKey}) {
     }
   }, []);
 
-console.log(`http://154.26.136.90:8000${streamKey}.flv`);
+// console.log(`http://154.26.136.90:8000${streamKey}.flv`);
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[80%]  justify-center flex items-center z-10 ">
       <div

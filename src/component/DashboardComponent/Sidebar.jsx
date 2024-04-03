@@ -41,7 +41,7 @@ function Sidebar() {
   }
   
   return (
-    <div className=" fixed z-10 flex flex-col  items-center w-full lg:w-[12rem]  background-gradiant h-[90px] lg:min-h-screen ">
+    <div className="fixed w-2/12  z-10 flex flex-col  items-center   background-gradiant h-[90px] lg:min-h-screen ">
       <div className=" flex items-center justify-between w-full z-50 px-10 py-2 lg:py-0 lg:min-w-[200px]">
         <div
           className="logo w-6 z-50 pt-3 cursor-pointer"
@@ -80,13 +80,13 @@ function Sidebar() {
               <Tab key={index} {...item} handleClick={handleNavigate} />
             ))}
       </div>
-      <div className="helpcenter bg-[#1B2B65] px-3 absolute flex-col flex items-center bottom-20 w-[90%] rounded-lg pt-10 pb-5">
+      <div className="helpcenter bg-[#1B2B65] px-3 absolute flex-col flex items-center bottom-20  rounded-lg pt-10 pb-5">
         <div className="h-12 w-12 rounded-full glassG absolute -top-6 flex items-center justify-center">
           <div className="bg-blue items-center justify-center text-white flex rounded-full w-9 h-9">
             <FaQuestion />
           </div>
         </div>
-        <div className="flex flex-col gap-5 ">
+        <div className="flex flex-col  ">
           <h1 className="text-white text-sm font-medium">
             Need Help With Dash?
           </h1>

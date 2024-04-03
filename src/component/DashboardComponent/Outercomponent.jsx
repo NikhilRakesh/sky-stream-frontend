@@ -13,7 +13,7 @@ function OutercomponentDashboard() {
 
  const fetchData = ()=>{
    setTimeout(()=>{
-    axiosInstance
+    axiosInstance 
       .get(`/stats/live-now/${snap.userId}`)
       .then((res) => {
         setLoading(false);
@@ -38,7 +38,7 @@ function OutercomponentDashboard() {
         <Meter />
       </div>
       <div className="flex gap-5 py-5 ">
-        <Preview  />
+        {/* <Preview  /> */}
         {/* <User /> */}
       </div>
     </div>

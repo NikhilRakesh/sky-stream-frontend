@@ -10,7 +10,7 @@ import PageNotFound from '../../pages/404'
 
 function Right() {
   return (
-    <div className='w-[100%] min-h-screen '>
+    <div className=' w-10/12 fixed'>
       <DashboardHeader />
     <Routes>
       <Route path='/dashboard' element={<OutercomponentDashboard />} />

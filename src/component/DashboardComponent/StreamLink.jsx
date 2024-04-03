@@ -113,8 +113,8 @@ function StreamLink({ handleClose, view, ...item }) {
               `rtmp://skystreamservers.com${item.streamKey}`,
               `http://skystreamservers.com${item.streamKey}`,
               `ws://skystreamservers.com${item.streamKey}.flv`,
-              `http://skystreamservers.com${item.streamKey}/index.m3u8`,
-              `http://skystreamservers.com${item.streamKey}/index.mpd`,
+              `http://skystreamservers.com${item.streamKey}.m3u8`,
+              `http://skystreamservers.com${item.streamKey}.mpd`,
             ].map((value, index) => (
               <div key={index} className="relative">
                 <input

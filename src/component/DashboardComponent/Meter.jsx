@@ -14,7 +14,7 @@ function Meter() {
 
   useEffect(() => {
     setInterval(() => {
-      axiosInstance    
+      axiosInstance
         .get("/stats/system", { withCredentials: true })
         .then((res) => {
           setStats(res.data.data);
@@ -25,7 +25,7 @@ function Meter() {
         });
     }, 5000);
   }, []);
-
+ 
   return (
     <div className=" h-72 w-[790px] rounded-xl bg-white py-5 px-5 gap-5 flex flex-col ">
       <div className="flex justify-around">
@@ -40,15 +40,15 @@ function Meter() {
             {snap.userData.superAdmin && (
               <>
                 <div className="flex items-center flex-col gap-3">
-                  <Gauage percent={stats.cpuLoad} />
+                  <Gauage percent={stats.cpuUsage} />
                   <h6 className="mt-7 text-sm font-thin">CPU Load</h6>
                 </div>
                 <div className="flex items-center flex-col gap-3">
-                  <Gauage percent={stats.cpuLoad + 18} />
+                  <Gauage percent={stats.diskWrite} />
                   <h6 className="mt-7 text-sm">Disk Read</h6>
                 </div>
                 <div className="flex items-center flex-col gap-3">
-                  <Gauage percent={stats.cpuLoad - 14} />
+                  <Gauage percent={((stats.diskWrite) / stats.cpuCount) * 100} />
                   <h6 className="mt-7 text-sm">Disk Write</h6>
                 </div>
               </>
@@ -66,15 +66,15 @@ function Meter() {
         ) : (
           <>
             <div className="flex flex-col items-center">
-              <CircleChart value={stats.inBandwidth} />
+              <CircleChart value={stats?.inBandwidth} />
               <h6 className="mt-3">In Bandwidth</h6>
             </div>
             <div className="flex flex-col items-center">
-              <CircleChart value={stats.outBandwidth} />
+              <CircleChart value={stats?.outBandwidth} />
               <h6 className="mt-3">Out Bandwidth</h6>
             </div>
             <div className="flex flex-col items-center">
-              <CircleChart value={stats.totalMemoryUsage} />
+              <CircleChart value={stats?.memoryUsage} />
               <h6 className="mt-3">Memory Usage</h6>
             </div>
           </>

@@ -19,7 +19,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex  ">
       {snap.userData.message.block && (
         <div className=" w-screen h-screen absolute z-50  flex justify-center items-center">
           <div className="bg-white rounded-lg shadow-lg h-96 w-96 justify-center items-center flex flex-col gap-5">
@@ -42,10 +42,10 @@ function Dashboard() {
           </div>
         </div>
       )}
-      <div className="lg:w-[12rem] w-full">
+      <div className="">
         <Sidebar />
       </div>
-      <div className="w-full pl-5">
+      <div className="w-full flex  justify-end ">
         <Right />
       </div>
     </div>

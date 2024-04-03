@@ -25,7 +25,7 @@ function OutercomponentLive() {
       })
       .catch((err) => console.log(err));
   },[snap.userId])
-
+console.log(live);
   return (
     <>
       <div className="bg-gray relative">
