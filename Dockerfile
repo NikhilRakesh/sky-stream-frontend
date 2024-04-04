@@ -13,6 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+RUN touch .
+
 # Build the React app
 RUN npm run build
 

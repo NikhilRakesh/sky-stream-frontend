@@ -24,7 +24,7 @@ function OutercomponentChannel() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let error = DomainValidation(domain);
+    let error = DomainValidation(domain); 
     setDomainerror(error);
     console.log("Error: ", error);
 
@@ -75,14 +75,23 @@ function OutercomponentChannel() {
   }, [snap.refreshData, snap.userId]);
   return (
     <div className=" bg-light">
-      <div className="Heading  w-full flex justify-between bg-light  px-16 py-8 text-blue items-center font-semibold border-[1px]">
-        <div className="flex gap-2 min-w-[180px] items-center">
-          <h1>CHANNEL NAME</h1>
+      <div className="Heading  w-full flex justify-between bg-light px-16 py-8  items-center font-bold border-[1px]">
+        <div className="w-2/12">
+          <h1>Channel Name</h1>
         </div>
-        <div className="flex gap-2 items-center ">
-          <h1>STATUS</h1>
+        <div className="flex w-2/12 justify-center">
+          <h1>Status</h1>
         </div>
-        {snap.userData.superAdmin && (
+        <div className="flex w-2/12 justify-center ">
+          <h1>Stream Keys</h1>
+        </div>
+        <div className="flex w-2/12 justify-center ">
+          <h1>Block</h1>
+        </div>
+        <div className="flex w-2/12 justify-center ">
+          <h1>Delete</h1>
+        </div>
+        {/* {snap.userData.superAdmin && (
           <div className="cursor-pointer">
             <button
               className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all"
@@ -91,7 +100,7 @@ function OutercomponentChannel() {
               Add Domain
             </button>
           </div>
-        )}
+        )} */}
 
         <div
           className="cursor-pointer"
