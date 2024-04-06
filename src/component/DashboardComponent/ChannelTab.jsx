@@ -9,7 +9,7 @@ import state from '../../store';
 import { useSnapshot } from 'valtio';
 function ChannelTab({ ...item }) {
   const [view, setView] = useState(false);
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(item.isBlocked);
   const snap = useSnapshot(state);
 
   const handleDelete = () => {
@@ -35,6 +35,30 @@ function ChannelTab({ ...item }) {
     });
   };
 
+  const handleBlock = async () => {
+    Swal.fire({
+      title: `${item.isBlocked ? 'UnBlock Channel' : 'Block Channel'}`,
+      text: "Are you sure you want to block this channel?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: `${item.isBlocked ? 'UnBlock ' : 'Block'}`,
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setIsToggled((prev) => !prev)
+        axiosInstance
+          .post(`/channel/block-channel/${item._id}`, { blocked: item.isBlocked }, { withCredentials: true })
+          .then((res) => {
+
+            state.refreshData = !snap.refreshData;
+          });
+        Swal.fire(`${item.isBlocked ? 'UnBlocked!' : 'Blocked!'}`, `Your channel has been ${item.isBlocked ? 'UnBlocked' : 'Blocked'}.`, "success");
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "Your Channel is safe :)", "info");
+      }
+    });
+  }
+
   return (
     <div className="w-full flex justify-between px-10 py-9 border-2 bg-white">
       <div className="tab flex items-center font-semibold  w-full">
@@ -50,8 +74,8 @@ function ChannelTab({ ...item }) {
         </div>
         <div className='w-2/12 flex justify-center'>
           <button
-            className={`w-14 h-8 flex items-center rounded-full border ${isToggled ? 'bg-blue-500' : 'bg-gray-300'}`}
-            onClick={() => setIsToggled((prev) => !prev)}
+            className={`w-14  h-8 flex items-center rounded-full border ${isToggled ? 'bg-blue' : 'bg-gray'}`}
+            onClick={handleBlock}
           >
             <div
               className={`w-6 h-6 rounded-full bg-white shadow-md transform border transition-all duration-300 ${isToggled ? 'translate-x-7' : ''}`}

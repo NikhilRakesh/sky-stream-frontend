@@ -5,7 +5,7 @@ import flvjs from "flv.js";
 
 // eslint-disable-next-line react/prop-types
 function PreviewLive({ View, Live, handleClose, streamKey }) {
-  
+
   const flvPlayerRef = useRef(null);
   const videoElementRef = useRef(null);
 
@@ -26,7 +26,6 @@ function PreviewLive({ View, Live, handleClose, streamKey }) {
   }, []);
 
 
-
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[80%]  justify-center flex items-center z-10 ">
       <div
@@ -36,7 +35,7 @@ function PreviewLive({ View, Live, handleClose, streamKey }) {
         <div className="h-[60px] flex justify-between items-center w-full px-10 border-b-[1px] border-b-black">
           <div className="flex items-center gap-2">
             <AiFillPlayCircle className="text-blue text-2xl mt-[1px]" />
-            <h1 className="font-semibold">Preview {inBandwidth.toFixed(2)}</h1>
+            <h1 className="font-semibold">Preview </h1>
           </div>
           <div
             className="hover:text-red text-3xl"
