@@ -56,7 +56,7 @@ function OutercomponentChannel() {
 
   useEffect(() => {
     axiosInstance
-      .get(`/channel/${snap.userId}`)
+      .get(`/channel/${snap?.userData?._id}`)
       .then((res) => {
         setChannel(res.data);
       })
@@ -73,6 +73,7 @@ function OutercomponentChannel() {
         console.log(err);
       });
   }, [snap.refreshData, snap.userId]);
+
   return (
     <div className=" bg-light">
       <div className="Heading  w-full flex justify-between bg-light px-16 py-8  items-center font-bold border-[1px]">
@@ -134,7 +135,7 @@ function OutercomponentChannel() {
           />
         ) : null}
       </div>
-      <div>
+      <div className="">
         {loading ? (
           <div>
             <SkelitonList />

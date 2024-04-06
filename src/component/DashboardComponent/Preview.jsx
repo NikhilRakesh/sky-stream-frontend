@@ -25,7 +25,7 @@ function Preview() {
         const videoElement = document.getElementById("videoElement");
         const flvPlayer = flvjs.createPlayer({
           type: "flv",
-          url: `http://154.26.136.90:8000${live[0]?.streamKey}.flv`,
+          url: `https://live.skystreamservers.com${live[0]?.streamKey}.flv`,
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

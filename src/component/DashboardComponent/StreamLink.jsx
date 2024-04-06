@@ -113,8 +113,8 @@ function StreamLink({ handleClose, view, ...item }) {
               `rtmp://skystreamservers.com${item.streamKey}`,
               `http://skystreamservers.com${item.streamKey}`,
               `ws://skystreamservers.com${item.streamKey}.flv`,
-              `http://skystreamservers.com${item.streamKey}.m3u8`,
-              `http://skystreamservers.com${item.streamKey}.mpd`,
+              `http://skystreamservers.com${item.streamKey}/index.m3u8`,
+              `http://skystreamservers.com${item.streamKey}/index.mpd`,
             ].map((value, index) => (
               <div key={index} className="relative">
                 <input
@@ -140,7 +140,7 @@ function StreamLink({ handleClose, view, ...item }) {
             ))}
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex justify-between">
+            {/* <div className="flex justify-between">
               <input
                 type="text"
                 name="edge"
@@ -155,11 +155,11 @@ function StreamLink({ handleClose, view, ...item }) {
               >
                 Push
               </button>
-            </div>
-            <small className="text-[10px]">
+            </div> */}
+            {/* <small className="text-[10px]">
               please add the edge link + stream key
               {error.edge && <p className="text-red">Please add edge link</p>}
-            </small>
+            </small> */}
             
             {edgeData?.map((item, index) => (
               <>

@@ -17,7 +17,7 @@ const CreateChannel = ({ value, handleClose }) => {
 
   useEffect(() => {
     axiosInstance
-      .get(`/domain/${snap.userId}`)
+      .get(`/domain/${snap?.userData?._id}`)
       .then((res) => {
         setDomainData(res.data.domain);
       })
@@ -61,6 +61,7 @@ const CreateChannel = ({ value, handleClose }) => {
         });
     } 
   };
+
 
   return (
     <div className="fixed inset-0 left-auto right-auto h-screen w-[90%]  justify-center flex items-center z-10 ">

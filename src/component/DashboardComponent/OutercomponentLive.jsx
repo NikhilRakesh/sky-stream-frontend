@@ -14,7 +14,7 @@ function OutercomponentLive() {
 
   useEffect(() => {
     axiosInstance
-      .get(`/stats/live-now/${snap.userId}`)
+      .get(`/stats/live-now/${snap?.userData?._id}`)
       .then((res) => {
         setLoading(false);
         if (res.data.data.length === 0) {
@@ -26,7 +26,6 @@ function OutercomponentLive() {
       .catch((err) => console.log(err));
   }, [snap.userId])
 
-  console.log('live',live);
   return (
     <>
       <div className="bg-gray relative">

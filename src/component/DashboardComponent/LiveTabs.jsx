@@ -33,7 +33,7 @@ function LiveTabs(item) {
   return (
     <div className="">
       <div className="flex  items-center w-full h-10 border-b-4 py-10 bg-white  ">
-        <div className="name w-1/12 ">{item.name}</div>
+        <div className="name w-2/12 ">{item.name}</div>
         <div className='w-3/12 '>{dateFormat(item.startTime)}</div>
         <div className="text-red w-2/12  flex justify-center">Live</div>
         <div className=" w-2/12  flex justify-center">{inBandwidth}</div>

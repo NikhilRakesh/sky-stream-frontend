@@ -27,12 +27,7 @@ function MoreUser({ show,handleChange,value, handleView, view, ...item  }) {
           show ? "z-0" : "-z-10"
         } border-b-2`}
       >
-        <div className="cursor-pointer preview flex flex-col items-center gap-2">
-          <label>Preview</label>
-          <div className="text-xl text-blue">
-            <AiOutlinePlayCircle />
-          </div>
-        </div>
+       
         <div className="createUser flex flex-col items-center gap-2 cursor-pointer">
           <label htmlFor="createUser">Create User</label>
 

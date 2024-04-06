@@ -15,7 +15,7 @@ function PreviewLive({ View, Live, handleClose, streamKey }) {
       const videoElement = videoElementRef.current;
       const flvPlayer = flvjs.createPlayer({
         type: "flv",
-        url: `http://live.skystreamservers.com${streamKey}.flv`,
+        url: `https://live.skystreamservers.com${streamKey}.flv`,
       });
 
       flvPlayer.attachMediaElement(videoElement);

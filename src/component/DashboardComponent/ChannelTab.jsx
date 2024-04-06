@@ -60,7 +60,7 @@ function ChannelTab({ ...item }) {
   }
 
   return (
-    <div className="w-full flex justify-between px-10 py-9 border-2 bg-white">
+    <div className="w-full flex justify-between px-10 py-9 border-2 bg-white ">
       <div className="tab flex items-center font-semibold  w-full">
         <div className=" w-2/12 flex justify-center  ">
           <h1>{item.name}</h1>
