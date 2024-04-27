@@ -33,7 +33,7 @@ function OutercomponentDashboard() {
 
   return (
     <div className="bg-slate-200 h-full px-5 py-9 ">
-      <div className="flex gap-5">
+      <div className="flex md:flex-row flex-col gap-5">
         <Livenow live={live} loading={loading} />
         <Meter />
       </div>

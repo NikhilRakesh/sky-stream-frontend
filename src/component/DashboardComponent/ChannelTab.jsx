@@ -60,7 +60,7 @@ function ChannelTab({ ...item }) {
   }
 
   return (
-    <div className="w-full flex justify-between px-10 py-9 border-2 bg-white ">
+    <div className="w-full flex justify-between  py-9 border-2 bg-white ">
       <div className="tab flex items-center font-semibold  w-full">
         <div className=" w-2/12 flex justify-center  ">
           <h1>{item.name}</h1>
@@ -68,11 +68,11 @@ function ChannelTab({ ...item }) {
         <div className=" w-2/12 flex justify-center  ">
           <h1 className="text-red">Live</h1>
         </div>
-        <div className="flex w-2/12   items-center  text-sm">
-          <h1 className="text-black text-base">Streamkey : </h1>{" "}
+        <div className="flex w-4/12  justify-center items-center  text-sm">
+          <h1 className="text-black text-base truncate">Streamkey : </h1>{" "}
           {item.streamKey}
         </div>
-        <div className='w-2/12 flex justify-center'>
+        <div className='w-1/12 flex justify-center'>
           <button
             className={`w-14  h-8 flex items-center rounded-full border ${isToggled ? 'bg-blue' : 'bg-gray'}`}
             onClick={handleBlock}
@@ -82,7 +82,7 @@ function ChannelTab({ ...item }) {
             />
           </button>
         </div>
-        <div className=" w-2/12 flex justify-center ">
+        <div className=" w-1/12 flex justify-center ">
           <button
             onClick={handleDelete}
             className="bg-red px-2 py-2 rounded-md text-white text-sm"

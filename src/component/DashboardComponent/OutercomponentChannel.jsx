@@ -76,20 +76,20 @@ function OutercomponentChannel() {
 
   return (
     <div className=" bg-light">
-      <div className="Heading  w-full flex justify-between bg-light px-16 py-8  items-center font-bold border-[1px]">
-        <div className="w-2/12">
+      <div className="Heading  w-full flex  bg-light py-5  items-center font-bold border-[1px]">
+        <div className="md:w-2/12 md:flex text-xs md:text-base justify-center">
           <h1>Channel Name</h1>
         </div>
-        <div className="flex w-2/12 justify-center">
+        <div className="md:flex text-xs md:text-base md:w-2/12 justify-center">
           <h1>Status</h1>
         </div>
-        <div className="flex w-2/12 justify-center ">
+        <div className="md:flex text-xs md:text-base md:w-4/12 justify-center ">
           <h1>Stream Keys</h1>
         </div>
-        <div className="flex w-2/12 justify-center ">
+        <div className="md:flex text-xs md:text-base md:w-1/12 justify-center ">
           <h1>Block</h1>
         </div>
-        <div className="flex w-2/12 justify-center ">
+        <div className="md:flex text-xs md:text-base md:w-1/12 justify-center ">
           <h1>Delete</h1>
         </div>
         {/* {snap.userData.superAdmin && (
@@ -115,7 +115,7 @@ function OutercomponentChannel() {
                 );
           }}
         >
-          <button className="bg-blue text-white px-3 py-1 rounded-md hover:scale-105 transform transition-all ">
+          <button className="bg-blue text-white px-3 py-3 text-xs rounded-md hover:scale-105 transform transition-all ">
             Create Channel
           </button>
         </div>

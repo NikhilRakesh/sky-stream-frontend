@@ -27,7 +27,7 @@ function Meter() {
   }, []);
  
   return (
-    <div className=" h-72 w-[790px] rounded-xl bg-white py-5 px-5 gap-5 flex flex-col ">
+    <div className=" h-72 md:w-[790px]  rounded-xl bg-white py-5 px-5 gap-5 flex flex-col ">
       <div className="flex justify-around">
         {loading ? (
           <>

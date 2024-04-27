@@ -30,7 +30,7 @@ function UserTab({ ...item }) {
     axiosInstance
       .post(`users/user-permission/${item._id}`, permissions) // Assuming the backend endpoint is 'updateUserPermission'
       .then((res) => {
-    
+
         state.refreshData = !snap.refreshData;
       })
       .catch((err) => {
@@ -62,7 +62,7 @@ function UserTab({ ...item }) {
         axiosInstance
           .get(`users/delete/${snap.userId}/${item._id}`)
           .then((res) => {
-        
+
             state.refreshData = !snap.refreshData;
             Swal.fire("Deleted!", "Your User has been deleted.", "success");
           })
@@ -85,9 +85,8 @@ function UserTab({ ...item }) {
   return (
     <div className="bg-white ">
       <div
-        className={`fixed inset-0 left-auto  right-auto h-screen w-[90%] justify-center flex items-center z-10 ${
-          userDetailsMenu ? "block" : "hidden"
-        }`}
+        className={`fixed inset-0 left-auto  right-auto h-screen w-[90%] justify-center flex items-center z-10 ${userDetailsMenu ? "block" : "hidden"
+          }`}
       >
         <div
           className={`w-96 pb-3 py-10 px-5 h-fit  rounded-md border-black border-[1px] z-20   bg-white relative  `}
@@ -140,26 +139,26 @@ function UserTab({ ...item }) {
           </div>
         </div>
       </div>
-      <div className="bg-white flex py-6 px-16  border-b-[0.5px] items-center justify-between border-gray ">
+      <div className="bg-white flex py-4 md:px-5 border-b-[0.5px] items-center  border-gray ">
         <div
-          className="Name gap-3 flex items-center  max-w-[20px] cursor-pointer "
+          className="Name gap-3 md:flex items-center cursor-pointer md:w-2/12  "
           onClick={() => setUserDetailsMenu(true)}
         >
           <AiTwotoneMinusCircle
-            className="min-w-[15px] max-w-[15px]"
+            className="md:min-w-[15px] max-w-[15px]"
             color={item.color}
           />
-          <h1 className="text-lg font-medium cursor-pointer ">{item.name}</h1>
+          <h1 className="text-sm font-medium cursor-pointer ">{item.name}</h1>   
         </div>
-        <div className="Live text-red">{item.status ? "Live" : "Offline"}</div>
-        <div className="CreatedDate ">
+        <div className="Live text-red md:w-1/12  text-sm">{item.status ? "Live" : "Offline"}</div>
+        <div className="CreatedDate text-sm w-3/12 flex justify-center">
           {dateFormat(item.createdAt, "dd-mm-yy")}
         </div>
 
-        <div className="ExpiryDate">
+        <div className="ExpiryDate text-sm w-3/12 flex justify-center">
           {dateFormat(item.createdAt, "dd-mm-yy")}
         </div>
-        <div>
+        <div className="w-1/12  flex justify-center">
           <button
             onClick={handleDelete}
             className="px-2 py-2 bg-red text-white rounded-md"
@@ -167,7 +166,7 @@ function UserTab({ ...item }) {
             <MdDelete />
           </button>
         </div>
-        <div className="text-3xl text-blue" onClick={() => setShow(!show)}>
+        <div className="text-3xl text-blue w-2/12 pl-5 flex justify-center" onClick={() => setShow(!show)}>
           <MdOutlineExpandMore />
         </div>
       </div>

@@ -17,7 +17,7 @@ function OutercomponentUser() {
   const [createuser, setCreateuser] = useState(false);
   const [resopnes, setResponse] = useState([]);
   const [error, setError] = useState({})
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,7 +32,7 @@ function OutercomponentUser() {
     deleteChannel: false,
   });
 
-  
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -44,40 +44,40 @@ function OutercomponentUser() {
     e.preventDefault();
     let error = CreateUserValidation(formData)
     setError(error)
-    if(Object.keys(error).length == 0){
-      console.log('insde condition',snap.userId);  
+    if (Object.keys(error).length == 0) {
+      console.log('insde condition', snap.userId);
       axiosInstance
-      .post(`/users/${snap.userId}/create-user/`, formData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        state.refreshData = !snap.refreshData;
-        setResponse(true);
-        setCreateuser(false);
-         Swal.fire("Created!", "Your Channel has been Created.", "success");
-      })
-      .catch((err) =>{
-         if (err.response.status === 401) {
-           Swal.fire(
-             "Not Authorized",
-             "You are not authorized to Create User.",
-             "error"
-           );
-         }
+        .post(`/users/${snap.userId}/create-user/`, formData, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          state.refreshData = !snap.refreshData;
+          setResponse(true);
+          setCreateuser(false);
+          Swal.fire("Created!", "Your Channel has been Created.", "success");
+        })
+        .catch((err) => {
+          if (err.response.status === 401) {
+            Swal.fire(
+              "Not Authorized",
+              "You are not authorized to Create User.",
+              "error"
+            );
+          }
           if (err.response.status === 409) {
             Swal.fire(
               "User Already Exist",
               "error"
             );
           }
-          console.log("errorssss :", err)});
+          console.log("errorssss :", err)
+        });
 
     }
-    else
-    {
-      console.log("Validation Error: ",error);
+    else {
+      console.log("Validation Error: ", error);
     }
-    
+
   };
 
 
@@ -98,46 +98,52 @@ function OutercomponentUser() {
   return (
     <div className="bg-gray relative">
       <div
-        className="flex justify-between items-center border-b-2 border-gray
-     px-20 py-9 text-blue font-bold bg-white"
+        className="flex justify-around  items-center border-b-2 border-gray
+     text-blue font-bold bg-white md:px-5"
       >
-        <div className="name flex items-center ">
+        <div className="name flex items-center md:text-base text-xs  md:w-2/12 ">
           NAME
-        
+
         </div>
-        <div className="status flex items-center  ">
+        <div className="status flex justify-center md:text-base text-xs md:w-1/12  ">
           STATUS
-        
+
         </div>
-        <div className="expiryDate flex items-center ">
+        <div className="expiryDate flex justify-center md:text-base text-xs md:w-3/12 ">
           CREATED DATE
-        
+
         </div>
 
-        <div className="expiryDate flex items-center ">
+        <div className="expiryDate flex justify-center md:text-base text-xs md:w-3/12 ">
           EXPIRY DATE
-        
+
         </div>
-        <div
-          className=" cursor-pointer hover:scale-105 transform ease-in-out w-fit h-fit bg-blue px-2 py-1 rounded-lg text-white"
-          onClick={() => {
-            snap.userData.createChannel
-              ? setCreateuser(!createuser)
-              : Swal.fire(
+        <div className="expiryDate flex justify-center items-center md:text-base text-xs md:w-1/12 ">
+          DELETE
+
+        </div>
+        <div className=" md:text-base text-xs md:w-2/12  flex justify-end ">
+          <div
+            className=" cursor-pointer hover:scale-105 transform ease-in-out w-fit h-fit bg-blue px-2 py-1 rounded-lg text-white"
+            onClick={() => {
+              snap.userData.createChannel
+                ? setCreateuser(!createuser)
+                : Swal.fire(
                   "Not Authorized",
                   "You are not authorized to Create User.",
                   "error"
                 );
-          }}
-        >
-          Create User
+            }}
+          >
+            Create User
+          </div>
         </div>
       </div>
       <div>
         {createuser ? (
           <CreateUser {...error}
             value={createuser}
-            
+
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleClose={setCreateuser}
@@ -155,7 +161,7 @@ function OutercomponentUser() {
             <SkelitonList />{" "}
           </div>
         ) : (
-          data?.user?.map((item, index) => <UserTab  key={index} {...item} />)
+          data?.user?.map((item, index) => <UserTab key={index} {...item} />)
         )}
       </div>
     </div>

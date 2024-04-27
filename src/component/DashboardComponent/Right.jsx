@@ -10,7 +10,7 @@ import PageNotFound from '../../pages/404'
 
 function Right() {
   return (
-    <div className=' w-10/12 '>
+    <div className='md:w-10/12 w-full'>
       <DashboardHeader />
     <Routes>
       <Route path='/dashboard' element={<OutercomponentDashboard />} />

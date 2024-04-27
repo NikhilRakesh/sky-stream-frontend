@@ -41,7 +41,7 @@ function Sidebar() {
   }
   
   return (
-    <div className="fixed w-2/12  z-10 flex flex-col  items-center   background-gradiant h-[90px] lg:min-h-screen ">
+    <div className="fixed md:w-2/12 w-full  z-10 md:flex flex-col  items-center   background-gradiant md:h-[90px] lg:min-h-screen ">
       <div className=" flex items-center justify-between w-full z-50 px-10 py-2 lg:py-0 lg:min-w-[200px]">
         <div
           className="logo w-6 z-50 pt-3 cursor-pointer"
